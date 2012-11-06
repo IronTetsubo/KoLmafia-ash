@@ -1,0 +1,1260 @@
+# Item ID, Name, one or more of chance percentage, drop.
+# If drop is a number, assume meat.
+# if drop is a range, assume meat.
+14	moxie weed	
+15	strongness elixir	
+16	magicalness-in-a-can	
+23	chewing gum on a string	
+24	ten-leaf clover	
+26	Dolphin King's map	
+69	Newbiesport&trade; tent	
+73	barskin tent	
+74	Spooky Temple map	
+78	pretty bouquet	
+84	Orcish meat locker	100	90-110
+85	unlocked meat locker	100	93-106
+86	rusty metal key	
+101	meat golem	
+104	spooky scarecrow	
+133	Certificate of Participation	
+138	ice-cold six-pack	
+143	cottage	
+145	barbed-wire fence	
+146	dinghy plans	
+157	Dramatic&trade; range	
+159	wad of dough	
+181	baseball	
+184	briefcase	50	300	50	fat stacks of cash
+186	enchanted bean	
+188	bat guano	
+196	disassembled clover	
+208	patchouli incense stick	
+210	Feng Shui for Big Dumb Idiots	
+211	decorative fountain	
+226	can of Red Minotaur	
+236	Queue Du Coq cocktailcrafting kit	
+270	white picket fence	
+271	enchanted barbell	
+272	concentrated magicalness pill	
+273	giant moxie weed	
+274	Familiar-Gro&trade; Terrarium	
+277	extra-strength strongness elixir	
+278	jug-o-magicalness	
+279	suntan lotion of moxiousness	
+297	tamarind-flavored chewing gum	
+298	lime-and-chile-flavored chewing gum	
+299	pickle-flavored chewing gum	
+300	jaba&ntilde;ero-flavored chewing gum	
+301	flat dough	
+307	Knob Goblin perfume	
+340	Knob Goblin steroids	
+341	Knob Goblin love potion	
+343	Knob Goblin sharpening spray	
+400	handful of drink tickets	
+401	Knob Kitchen grab-bag	
+407	pirate skull	
+411	Jolly Roger charrrm	
+413	Jolly Roger charrrm bracelet	
+417	henna tattoo	
+418	Ferrigno's Elixir of Power	
+419	serum of sarcasm	
+420	tomato juice of powerful power	
+421	philter of phorce	
+422	potion of potency	
+423	cordial of concentration	
+424	ointment of the occult	
+425	oil of expertise	
+426	potion of temporary gr8tness	
+429	beanbag chair	
+433	long skinny balloon	
+438	chef-in-the-box	
+440	bartender-in-the-box	
+453	sober pill	
+469	wussiness potion	
+493	ketchup hound	
+500	Elf Farm Raffle ticket	
+504	evil golden arches	
+516	Hey Deze map	
+526	Frobozz Real-Estate Company Instant House (TM)	
+527	volleyball	
+533	Gnollish toolbox	
+540	Tasty Fun Good rice candy	
+548	668 scroll	
+552	64735 scroll	
+553	31337 scroll	
+563	sonar-in-a-biscuit	
+567	hermit script	
+587	super-spiky hair gel	
+598	the Slug Lord's map	
+601	Dr. Hobo's map	
+602	Degrassi Knoll shopping list	
+604	Penultimate Fantasy chest	100	100-200
+614	probability potion	
+615	chaos butterfly	
+617	Angry Farmer candy	
+618	Mick's IcyVapoHotness Rub	
+620	thin black candle	
+621	Warm Subject gift certificate	100	400-500
+622	awful poetry journal	
+636	meat globe	
+637	cheap toaster	
+643	skeleton key ring	
+644	Crimbo pressie	
+647	present	
+667	giant castle map	
+678	chest of the Bonerdagon	
+687	blood of the Wereseal	
+707	pork elf goodies sack	
+744	hair spray	
+746	stat script	
+747	Knob Goblin firecracker	
+748	gourd potion	
+767	cologne of contempt	
+775	Yeti Protest Sign	
+780	scroll of pasta summoning	
+781	mafia aria	
+783	'Villa' document	
+793	oil of stability	
+794	oil of slipperiness	
+818	plus sign	
+819	milky potion	
+820	swirly potion	
+821	bubbly potion	
+822	smoky potion	
+823	cloudy potion	
+824	effervescent potion	
+825	fizzy potion	
+826	dark potion	
+827	murky potion	
+829	anti-anti-antidote	
+831	small box	
+832	large box	
+866	shaving cream	
+867	pine tar	
+872	Time Juice	
+873	rolling pin	
+874	unrolling pin	
+879	goofballs	
+905	Yummy Tummy bean	
+906	Rock Pops	
+907	Mr. Mediocrebar	
+908	Cold Hots candy	
+909	Wint-O-Fresh mint	
+911	Senior Mints	
+912	pixellated candy heart	
+913	candied kobold	
+926	Hawking's Elixir of Brilliance	
+939	small Crimbo Pressie	
+941	Crimbo stocking	
+951	extra special Crimbo stocking	
+1000	Meat maid	
+1038	Connery's Elixir of Audacity	
+1048	red striped oyster egg	
+1049	red polka-dot oyster egg	
+1050	red paisley oyster egg	
+1052	blue striped oyster egg	
+1053	blue polka-dot oyster egg	
+1054	blue paisley oyster egg	
+1056	puce striped oyster egg	
+1057	puce polka-dot oyster egg	
+1058	puce paisley oyster egg	
+1060	mauve striped oyster egg	
+1061	mauve polka-dot oyster egg	
+1062	mauve paisley oyster egg	
+1064	lavender striped oyster egg	
+1065	lavender polka-dot oyster egg	
+1066	lavender paisley oyster egg	
+1068	black striped oyster egg	
+1069	black polka-dot oyster egg	
+1070	black paisley oyster egg	
+1072	off-white striped oyster egg	
+1073	off-white polka-dot oyster egg	
+1074	off-white paisley oyster egg	
+1076	yellow striped oyster egg	
+1077	yellow polka-dot oyster egg	
+1078	yellow paisley oyster egg	
+1111	clockwork bartender-in-the-box	
+1112	clockwork chef-in-the-box	
+1113	clockwork maid	
+1134	spooky cosmetics bag	
+1135	spooky eyeliner	
+1136	spooky lipstick	
+1154	Breathetastic&trade; Premium Canned Air	
+1155	letter from King Ralph XI	
+1158	Meleegra&trade; pills	
+1161	pile of candy	
+1162	handsomeness potion	
+1163	marzipan skull	
+1167	plain brown wrapper	
+1168	less-than-three-shaped box	
+1169	exactly-three-shaped box	
+1170	chocolate box	
+1171	miniature coffin	
+1172	solid asbestos box	
+1173	solid linoleum box	
+1174	solid chrome box	
+1175	cryptic puzzle box	
+1176	refrigerated biohazard container	
+1177	magnetic field	
+1183	all-purpose flower	
+1187	deadly nightshade	
+1188	black lotus	
+1261	Hatorade	
+1265	box of sunshine	
+1267	dead mimic	
+1290	cheap wind-up clock	
+1301	deodorant	
+1302	reodorant	
+1321	Doc's Miracle Cure	
+1332	Cloaca-Cola knapsack	
+1333	Dyspepsi-Cola knapsack	
+1338	Dyspepsi-Cola d-rations	
+1339	Cloaca-Cola c-rations	
+1342	picture of a dead guy's girlfriend	
+1344	Gummi-Gnauga	
+1345	Now and Earlier	
+1346	Sugar Cog	
+1359	ninja pirate zombie robot head	
+1381	aspirin	
+1382	fancy chocolate	
+1398	doll house	
+1411	Tome of Snowcone Summoning	
+1412	purple snowcone	
+1413	green snowcone	
+1414	orange snowcone	
+1415	red snowcone	
+1416	blue snowcone	
+1417	black snowcone	
+1423	iceberglet	
+1424	ice sickle	
+1425	ice baby	
+1426	ice pick	
+1427	ice skates	
+1429	roll of drink tickets	
+1433	fruit bowl	
+1434	fruit basket	
+1437	useless powder	
+1438	twinkly powder	
+1439	hot powder	
+1440	cold powder	
+1441	spooky powder	
+1442	stench powder	
+1443	sleaze powder	
+1444	twinkly nuggets	
+1445	hot nuggets	
+1446	cold nuggets	
+1447	spooky nuggets	
+1448	stench nuggets	
+1449	sleaze nuggets	
+1450	twinkly wad	
+1451	hot wad	
+1452	cold wad	
+1453	spooky wad	
+1454	stench wad	
+1455	sleaze wad	
+1460	black velvet box	
+1494	sugar-coated pine cone	
+1498	McPhee's Grimoire of Hilarious Object Summoning	
+1501	explosion-flavored chewing gum	
+1504	yellow snowcone	
+1512	Knob Goblin pet-buffing spray	
+1513	Knob Goblin learning pill	
+1514	Knob Goblin eyedrops	
+1515	Knob Goblin nasal spray	
+1516	KWE-brand transistor radio	
+1523	bottle of used blood	
+1529	St. Sneaky Pete's Day goodies basket	
+1534	raffle prize box	
+1599	jazz soap	
+1604	astronaut ice-cream	
+1605	delectable catalyst	
+1606	ultimate wad	
+1607	libation of liveliness	
+1608	eyedrops of the ermine	
+1609	perfume of prejudice	
+1610	eyedrops of the ocelot	
+1611	potent potion of potency	
+1612	concentrated cordial of concentration	
+1618	ice stein	
+1619	munchies pill	
+1620	homeopathic healing powder	
+1622	astral mushroom	
+1624	blue-frosted astral cupcake	
+1625	green-frosted astral cupcake	
+1626	orange-frosted astral cupcake	
+1627	purple-frosted astral cupcake	
+1628	pink-frosted astral cupcake	
+1631	beer cartilage	
+1637	phial of hotness	
+1638	phial of coldness	
+1639	phial of spookiness	
+1640	phial of stench	
+1641	phial of sleaziness	
+1650	milk of magnesium	
+1652	candy brain	
+1687	Platinum Yendorian Express Card	
+1692	salamander slurry	
+1693	eyedrops of newt	
+1694	Frogade	
+1695	papotion of papower	
+1702	alphabet gum	
+1704	roofie	
+1767	pack of chewing gum	
+1768	Gnomish toolbox	
+1786	six pack of Mountain Stream	
+1787	bag of Cheat-Os	
+1789	frozen Mob Penguin	
+1794	handful of hand chalk	
+1798	pile of dusty animal bones	
+1799	dusty animal skull	
+1917	old leather wallet	100	400-600
+1918	old coin purse	100	450-550
+1957	disintegrating quill pen	
+1961	can of Binarrrca	
+1962	Bit O' Ectoplasm	
+1963	dance card	
+1998	pack of KWE trading card	
+1999	stick of &quot;gum&quot;	
+2036	radium-flavored potato chips	
+2037	wintergreen-flavored potato chips	
+2038	ennui-flavored potato chips	
+2044	your father's MacGuffin diary	
+2054	black market map	
+2056	adder bladder	
+2057	black pension check	100	400-450
+2058	black picnic basket	
+2059	Black No. 2	
+2079	makeshift turban	
+2080	makeshift cape	
+2081	makeshift skirt	
+2082	toothbrush	
+2083	makeshift crane	
+2085	bottle of ultravitamins	
+2086	antique bottle of cough syrup	
+2087	tube of hair oil	
+2088	Daffy Taffy	
+2095	towel	
+2096	guy made of bee pollen	
+2119	lit cigar	
+2181	chocolate lump	
+2197	fancy but probably evil chocolate	
+2213	tropical Crimbo pressie	
+2220	orange and black Crimboween candy	
+2221	Great Ball of Frozen Fire	
+2222	liar's pants	
+2223	flaming juggler's balls	
+2224	flaming pink shirt	
+2225	flaming familiar doppelg&auml;nger	
+2226	evil flaming eyeball pendant	
+2227	arse-a'fire elixir	
+2228	cosmic lemonade	
+2229	powdered toad horn	
+2232	smudged alchemical recipe	
+2236	turtle pheromones	
+2242	pygmy pygment	
+2280	Manual of Labor	
+2281	Manual of Transmission	
+2282	Manual of Dexterity	
+2303	Libram of Candy Heart Summoning	
+2304	white candy heart	
+2305	pink candy heart	
+2306	orange candy heart	
+2307	lavender candy heart	
+2308	yellow candy heart	
+2309	green candy heart	
+2310	white candygram	
+2311	pink candygram	
+2312	orange candygram	
+2313	lavender candygram	
+2314	yellow candygram	
+2315	green candygram	
+2327	can of black paint	
+2328	drum machine	
+2329	handful of confetti	
+2344	filthworm hatchling scent gland	
+2345	filthworm drone scent gland	
+2346	filthworm royal guard scent gland	
+2355	henna face paint	
+2356	tube of dread wax	
+2372	bunch of bananas	
+2378	banana spritzer	
+2379	banana smoothie	
+2419	bottle of rhinoceros hormones	
+2420	teeny-tiny magic scroll	
+2421	bottle of pirate juice	
+2422	irradiated pet snacks	
+2423	Mick's IcyVapoHotness Inhaler	
+2424	cyclops eyedrops	
+2425	can of spinach	
+2426	fire flower	
+2427	freezerburned ice cube	
+2428	fake blood	
+2429	Eau de Guaneau	
+2430	bag of lard	
+2431	bottle of Mystic Shell	
+2432	SPF 451 lip balm	
+2433	bottle of antifreeze	
+2434	black eyedrops	
+2435	Dogsgotnonoz pills	
+2436	donkey flipbook	
+2438	scented massage oil	
+2442	Cobb's Knob map	
+2449	six-pack of New Cloaca-Cola	
+2463	Manual of Transcendent Olfaction	
+2502	Really Expensive Jewelry and You	
+2511	Frat Army FGF	
+2512	Hippy Army MPE	
+2536	canopic jar	
+2540	tomb ratchet	
+2542	lesser grodulated violet	
+2543	tin magnolia	
+2544	begpwnia	
+2545	upsy daisy	
+2546	half-orchid	
+2548	outrageous sombrero	
+2569	ant agonist	
+2581	handful of sand	
+2582	brick of sand	
+2592	Knob Goblin lunchbox	
+2595	Ben-Gal&trade; Balm	
+2599	Discount Telescope Warehouse gift certificate	
+2603	smoldering box	
+2605	palm frond	
+2612	ancient vinyl coin purse	100	650-750
+2614	mojo filter	
+2631	gremlin juice	
+2632	mother's little helper	
+2634	mummy wrapping	
+2638	gauze hammock	
+2655	tiny bottle of absinthe	
+2660	not-a-pipe	
+2664	sensitive poetry journal	
+2665	bottled inspiration	
+2666	bellhop bell	
+2667	disintegrating spiky collar	
+2668	can-can-in-a-can	
+2669	patent antipsychotics	
+2670	Mariner's Friend cough drops	
+2672	library card	
+2674	bottle of black cat tonic	
+2675	handful of moss	
+2676	bit-o-cactus	
+2677	ancient protein powder	
+2679	sparkler	
+2680	snake	
+2681	M-242	
+2683	Warehouse 23 crate	
+2697	duct tape	
+2698	duct tape wallet	
+2708	funky dried mushroom	
+2711	black facepaint	
+2712	black sheepskin diploma	
+2713	Black Body&trade; spray	
+2718	spare kidney	
+2737	enchanted leopard-print barbell	
+2739	panty raider camouflage	
+2744	steel-scented air freshener	
+2745	gremlin mutagen	
+2746	extra-potent gremlin mutagen	
+2770	chunk of rock salt	
+2771	handful of pine needles	
+2804	vial of hamethyst juice	
+2805	vial of baconstone juice	
+2806	vial of porquoise juice	
+2807	flask of hamethyst juice	
+2808	flask of baconstone juice	
+2809	flask of porquoise juice	
+2810	jug of hamethyst juice	
+2811	jug of baconstone juice	
+2812	jug of porquoise juice	
+2827	anniversary gift box	
+2868	pirate pamphlet	
+2869	pirate brochure	
+2870	pirate tract	
+2941	Steal This Candy	
+2942	chocolate filthy lucre	
+2943	Angry Farmer's Wife Candy	
+2949	jar of &quot;Creole Lady&quot; marrrmalade	
+2950	Cap'm Caronch's Map	
+2951	Orcish Frat House blueprints	
+2957	rum barrel charrrm	
+2959	rum barrel charrrm bracelet	
+2963	rigging shampoo	
+2964	ball polish	
+2965	mizzenmast mop	
+2967	Swabbie&trade; swab	
+2968	Oil of Parrrlay	
+2972	grumpy old man charrrm	
+2973	grumpy old man charrrm bracelet	
+2974	tarrrnish charrrm	
+2975	tarrrnished charrrm bracelet	
+2979	fish-liver oil	
+2980	booty chest charrrm	
+2981	booty chest charrrm bracelet	
+2982	cannonball charrrm	
+2983	cannonball charrrm bracelet	
+2984	copper ha'penny charrrm	
+2985	copper ha'penny charrrm bracelet	
+2986	silver tongue charrrm	
+2987	silver tongue charrrm bracelet	
+2988	bit of clingfilm	
+2994	true grit	
+3009	Idol of Ak'gyxoth	
+3010	Emblem of Ak'gyxoth	
+3016	ancient cursed foot locker	
+3017	ornate ancient cursed chest	
+3018	gilded ancient cursed chest	
+3019	all-purpose cleaner	
+3021	large stone triangle	
+3022	medium stone triangle	
+3023	small stone triangle	
+3034	cursed piece of thirteen	66	501-1000
+3043	metallic foil bow	
+3044	metallic foil radar dish	
+3054	black candy heart	
+3055	cymbal syrup	
+3056	metallic foil cat ears	
+3067	dollhive	
+3075	General Assembly Module	
+3091	vitachoconutriment capsule	
+3092	handmade hobby horse	
+3093	ball-in-a-cup	
+3094	set of jacks	
+3115	old-fashioned Crimbo Pressie	
+3117	Libram of Divine Favors	
+3124	fruitfilm	
+3125	piece of after eight	
+3127	sandcastle	
+3146	El Vibrato punchcard (115 holes)	
+3147	El Vibrato punchcard (97 holes)	
+3148	El Vibrato punchcard (129 holes)	
+3149	El Vibrato punchcard (213 holes)	
+3150	El Vibrato punchcard (165 holes)	
+3159	warm El Vibrato drone	
+3160	humming El Vibrato drone	
+3161	glowing El Vibrato drone	
+3167	augmented El Vibrato drone	
+3168	seal eyeball	
+3173	evil vihuela	
+3181	evil potion of potency	
+3182	evil libation of liveliness	
+3183	evil tomato juice of powerful power	
+3184	evil eyedrops of the ermine	
+3185	evil ointment of the occult	
+3186	evil serum of sarcasm	
+3187	evil philter of phorce	
+3192	naughty origami kit	
+3193	naughty fortune teller	
+3194	origami &quot;gentlemen's&quot; magazine	
+3196	origami pasties	
+3197	origami riding crop	
+3198	El Vibrato trapezoid	
+3208	small laminated card	
+3209	little laminated card	
+3210	notbig laminated card	
+3211	unlarge laminated card	
+3212	dwarvish document	
+3213	dwarvish paper	
+3214	dwarvish parchment	
+3224	sewer wad	
+3230	oil of oiliness	
+3236	Kissin' Cousins	
+3237	Tales from the Fireside	
+3238	Blizzards I Have Died In	
+3239	Maxing, Relaxing	
+3240	Biddy Cracker's Old-Fashioned Cookbook	
+3241	Travels with Jerry	
+3242	Let Me Be!	
+3243	Asleep in the Cemetery	
+3244	Summer Nights	
+3245	Sensual Massage for Creeps	
+3261	Chester's bag of candy	
+3263	Sp'n-Zor's Grimoire of &quot;Tasteful&quot; Gifts	
+3264	black candygram	
+3268	handful of Crotchety Pine needles	
+3269	lump of Saccharine Maple sap	
+3270	handful of Laughing Willow bark	
+3276	black-and-blue light	
+3277	Loudmouth Larry Lamprey	
+3279	personal massager	
+3281	blue plasma ball	
+3290	abandoned candy	
+3316	epic wad	
+3321	packet of mayfly bait	
+3326	voodoo snuff	
+3336	dead guy's piece of double-sided tape	
+3344	bed of coals	
+3345	frigid air mattress	
+3346	filth-encrusted futon	
+3347	comfy coffin	
+3348	stained mattress	
+3353	llama lama gong	
+3358	delectable fire ant	
+3359	scrumptious ice ant	
+3360	delicious stinkbug	
+3361	yummy death watch beetle	
+3362	tasty louse	
+3365	Climate Colada	
+3366	digital underground potion	
+3367	interesting-looking twig	
+3368	glimmering roc feather	
+3369	glimmering phoenix feather	
+3370	glimmering penguin feather	
+3371	glimmering buzzard feather	
+3372	glimmering raven feather	
+3373	glimmering great tit feather	
+3374	house of twigs and spit	
+3375	The Ballad of Richie Thingfinder	
+3376	Benetton's Medley of Diversity	
+3377	Elron's Explosive Etude	
+3378	Chorale of Companionship	
+3379	Prelude of Precision	
+3393	Oscus's neverending soda	
+3401	deadly lampshade	
+3402	concentrated garbage juice	
+3403	lewd playing card	
+3412	Hodgman's journal #1: The Lean Times	
+3413	Hodgman's journal #2: Entrepreneurythmics	
+3414	Hodgman's journal #3: Pumping Tin	
+3415	Hodgman's journal #4: View From The Big Top	
+3416	hobo fortress blueprints	
+3422	sterno-flavored Hob-O	
+3423	frostbite-flavored Hob-O	
+3424	fry-oil-flavored Hob-O	
+3425	garbage-juice-flavored Hob-O	
+3426	strawberry-flavored Hob-O	
+3427	roll of Hob-Os	
+3428	Everlasting Deckswabber	
+3430	bindle of joy	
+3433	spice melange	
+3439	Rainbow's Gravity	
+3440	prismatic wad	
+3445	Junior Adventurer's kit	
+3458	STYX deodorant body spray	
+3473	Bash-&#332;s boxtop	
+3474	cranberry cordial	
+3475	blackberry polite	
+3476	plum lozenge	
+3477	pear lozenge	
+3478	peach lozenge	
+3485	glittery mascara	
+3495	sea salt crystal	
+3496	bazookafish bubble gum	
+3502	thermos of brew	
+3507	Scratch 'n' Sniff Sticker Tome	
+3523	shark cartilage	
+3524	eel battery	
+3525	temporary teardrop tattoo	
+3535	plans for depleted Grimacite hammer	
+3536	plans for depleted Grimacite gravy boat	
+3537	plans for depleted Grimacite weightlifting belt	
+3538	plans for depleted Grimacite grappling hook	
+3539	plans for depleted Grimacite ninja mask	
+3540	plans for depleted Grimacite shinguards	
+3541	plans for depleted Grimacite astrolabe	
+3561	pressurized potion of puissance	
+3562	pressurized potion of perspicacity	
+3563	pressurized potion of pulchritude	
+3571	flytrap pellet	80	300-400	16	dull fish scale	1	flytrap bezoar	3	baby cuddlefish
+3574	slimy chest	
+3580	wriggling flytrap pellet	
+3581	sushi-rolling mat	
+3587	sugar plum	
+3588	sugar banana	
+3589	sugar lime	
+3590	sugar cherry	
+3593	Mer-kin thingpouch	
+3595	Mer-kin fastjuice	
+3596	imitation crab crate	
+3602	rusty broken diving helmet	
+3611	sea grease	
+3612	sturdy Crimbo crate	
+3613	battered Crimbo Crate	
+3617	unstable DNA	
+3629	burrowgrub hive	
+3630	dusty Crimbo crate	
+3631	Gummi-DNA	
+3641	jamfish jam	
+3661	container of Spooky Putty	
+3662	Spooky Putty mitre	
+3663	Spooky Putty leotard	
+3664	Spooky Putty ball	
+3665	Spooky Putty sheet	
+3666	Spooky Putty snake	
+3667	Spooky Putty monster	
+3671	Uncle Crimbo's Rations	
+3674	throbbing rage gland	
+3676	Mer-kin foodbucket	
+3693	pressurized potion of perception	
+3694	pressurized potion of proficiency	
+3731	glass gnoll eye	
+3732	cheap cigar butt	
+3735	fat wallet	100	351-450
+3739	Boozehounds Anonymous token	
+3742	jellyfish gel	
+3745	fumble formula	
+3747	mother's secret recipe	
+3749	concoction of clumsiness	
+3753	Libram of Love Songs	
+3754	love song of vague ambiguity	
+3755	love song of smoldering passion	
+3756	love song of icy revenge	
+3757	love song of sugary cuteness	
+3758	love song of disturbing obsession	
+3759	love song of naughty innuendo	
+3760	breath mint	
+3779	hair of the fish	
+3781	blank prescription sheet	
+3782	bottle of melodramamine	
+3783	bottle of extra-strength melodramamine	
+3800	aquaviolet jub-jub bird	
+3801	crimsilion jub-jub bird	
+3802	charpuce jub-jub bird	
+3807	Mer-kin hidepaint	
+3821	glowing syringe	
+3823	wad of cotton	
+3883	cult memo	
+3884	decoded cult documents	
+3885	vial of red slime	
+3886	vial of yellow slime	
+3887	vial of blue slime	
+3888	vial of orange slime	
+3889	vial of green slime	
+3890	vial of violet slime	
+3891	vial of vermilion slime	
+3892	vial of amber slime	
+3893	vial of chartreuse slime	
+3894	vial of teal slime	
+3895	vial of indigo slime	
+3896	vial of purple slime	
+3897	vial of brown slime	
+3902	figurine of a wretched-looking seal	
+3903	figurine of a cute baby seal	
+3904	figurine of an armored seal	
+3905	figurine of an ancient seal	
+3906	figurine of a sleek seal	
+3907	figurine of a shadowy seal	
+3908	figurine of a stinking seal	
+3909	figurine of a charred seal	
+3910	figurine of a cold seal	
+3911	figurine of a slippery seal	
+3914	turtle wax	
+3915	turtle wax shield	
+3916	turtle wax helmet	
+3917	turtle wax greaves	
+3919	turtlemail bits	
+3930	tainted seal's blood	
+3932	ingot of seal-iron	
+3935	hyperinflated seal lung	
+3936	scrap of shadow	
+3937	fustulent seal grulch	
+3946	Clan VIP Lounge invitation	
+3949	stuffed treasure chest	
+3965	cube of billiard chalk	
+3969	sizzling seal fat	
+3971	frost-rimed seal hide	
+3973	seal lube	
+3988	ancient turtle shell	
+3991	slime-soaked hypophysis	
+3992	slime-soaked brain	
+3993	slime-soaked sweat gland	
+3995	big bundle of chamoix	
+3996	boxcar turtle	
+3997	dolphin whistle	
+4001	agua de vida	
+4005	ballast turtle	
+4006	memory of some delicious amino acids	
+4039	slimy alveolus	
+4044	wumpus hair	
+4089	neurostim pill	
+4090	physiostim pill	
+4091	tiny slimy cyst	
+4092	small slimy cyst	
+4093	medium slimy cyst	
+4094	big slimy cyst	
+4095	green peawee marble	
+4096	brown crock marble	
+4097	red China marble	
+4098	lemonade marble	
+4099	bumblebee marble	
+4100	jet bennie marble	
+4101	beige clambroth marble	
+4102	steely marble	
+4103	beach ball marble	
+4104	black catseye marble	
+4105	big bumboozer marble	
+4107	bitter pill	
+4114	secret from the future	
+4115	moist sack	
+4122	wad of slimy rags	
+4133	tempura air	
+4134	pressurized potion of pneumaticity	
+4135	moveable feast	
+4136	Bag o' Tricks	
+4146	floaty sand	
+4151	dubious peppermint	
+4152	Elvish delight	
+4153	rockfish stomach	
+4154	live lobster	
+4155	wok lobster	
+4163	children of the candy corn	
+4164	Good 'n' Slimy	
+4170	shaking 4-d camera	
+4171	crystallized memory	
+4177	Tome of Sugar Shummoning	
+4184	slime convention swag bag	
+4189	floaty inverse geode	
+4211	mermaid's purse	
+4217	groupie bra	
+4218	groupie spangles	
+4220	S.A.V.E. flyer	
+4240	gun cleaning kit	
+4243	mariachi toothpaste	
+4248	expensive cigar	
+4250	fisherman's sack	
+4252	vial of squid ink	
+4253	potion of fishy speed	
+4254	spooky bark	
+4256	spooky sap	
+4273	ribbon candy	
+4295	crystal orb of spirit wrangling	
+4296	depleted uranium seal figurine	
+4334	fancy chocolate car	
+4340	Piddles	
+4341	BitterSweetTarts	
+4342	Polka Pop	
+4344	Crimbo wreath	
+4345	string of Crimbo lights	
+4346	plastic Crimbo reindeer	
+4347	gingerbread house	
+4348	leftover Crimbo rations	
+4353	Crimbough	
+4354	A Crimbo Carol, Ch. 1	
+4355	A Crimbo Carol, Ch. 2	
+4356	A Crimbo Carol, Ch. 3	
+4357	A Crimbo Carol, Ch. 4	
+4358	A Crimbo Carol, Ch. 5	
+4359	A Crimbo Carol, Ch. 6	
+4364	elven suicide capsule	
+4392	Crimbo Candy Cookbook	
+4393	Crimbo peppermint bark	
+4394	Crimbo fudge	
+4395	Crimbo candied pecan	
+4398	stinky cheese ball	
+4399	stinky cheese sword	
+4400	stinky cheese diaper	
+4401	stinky cheese wheel	
+4402	stinky cheese eye	
+4403	Staff of Queso Escusado	
+4405	foreign box	
+4406	The Art of Slapfighting	
+4407	Uncle Romulus	
+4408	A Beginner's Guide to Charming Snakes	
+4409	Zu Mannk&auml;se Dienen	
+4410	The Autobiography Of Dynamite Superman Jones	
+4411	Inigo's Incantation of Inspiration	
+4414	colorful plastic ball	
+4425	sealhide seal doll	
+4426	black hymnal	
+4431	NPZR chemistry set	
+4432	invisibility potion	
+4433	irresistibility potion	
+4434	irritability potion	
+4448	Instant Karma	
+4449	antique painting of a landscape	
+4450	map to The Landscaper's Lair	
+4457	snailmail bits	
+4461	seal-brain elixir	
+4462	chocolate seal-clubbing club	
+4463	chocolate turtle totem	
+4464	chocolate pasta spoon	
+4465	chocolate saucepan	
+4466	chocolate disco ball	
+4467	chocolate stolen accordion	
+4468	Libram of BRICKOs	
+4469	BRICKO brick	
+4471	BRICKO hat	
+4472	BRICKO pants	
+4473	BRICKO sword	
+4474	BRICKO ooze	
+4475	BRICKO bat	
+4476	BRICKO oyster	
+4477	BRICKO turtle	
+4478	BRICKO elephant	
+4479	BRICKO octopus	
+4480	BRICKO python	
+4481	BRICKO vacuum cleaner	
+4482	BRICKO airship	
+4483	BRICKO cathedral	
+4484	BRICKO gargantuchicken	
+4485	BRICKO pyramid	
+4488	BRICKO trunk	
+4497	recording of The Ballad of Richie Thingfinder	
+4498	recording of Benetton's Medley of Diversity	
+4499	recording of Elron's Explosive Etude	
+4500	recording of Chorale of Companionship	
+4501	recording of Prelude of Precision	
+4502	recording of Donho's Bubbly Ballad	
+4503	recording of Inigo's Incantation of Inspiration	
+4505	Northern pemmican	
+4507	Clan looking glass	
+4508	&quot;DRINK ME&quot; potion	
+4509	reflection of a map	
+4518	delicious comfit?	
+4545	stuffed pocketwatch	
+4559	antique record album	
+4560	map to Professor Jacking's laboratory	
+4570	Crazyleg's razor	
+4573	The Legendary Beat	
+4575	bugged beanie	
+4576	bugged balaclava	
+4579	Knob G&Atilde;&para;blin l&Atilde;&sup2;ve potion	
+4583	big glob of skin	
+4585	collection of tiny spooky objects	100	100-1000
+4592	pixel orb	
+4593	pixellated moneybag	100	450-550
+4596	map to Vanya's Castle	
+4597	antique 8-Bit Power magazine	
+4599	antique bottle opener	
+4600	map to the Kegger in the Woods	
+4604	silver keg	
+4608	respected companion biscuit	
+4609	essential tofu	
+4610	essential soy	
+4611	essential cameraderie	
+4612	antique souvenir drawing	
+4613	map to the Magic Commune	
+4623	chocolate-covered caviar	
+4625	coffee pixie stick	
+4626	superduperball	
+4627	finger cuffs	
+4636	Game Grid valued membership card	
+4641	KoL Con Six Pack	
+4649	chiptune guitar	
+4650	fixed-gear bicycle	
+4651	ironic moustache	
+4657	antique pair of blue jeans	
+4658	map to Ellsbury's Claim	
+4662	wet venom duct	
+4663	Ellsbury's journal	
+4670	beer-scented teddy bear	
+4672	comfy pillow	
+4677	unearthed volcanic meteoroid	
+4680	smoked potsherd	
+4687	fossilized bat skull	
+4688	fossilized serpent skull	
+4689	fossilized baboon skull	
+4690	fossilized wyrm skull	
+4703	red-hot medallion	
+4704	fossilized demon skull	
+4705	fossilized spider skull	
+4706	sinister ancient tablet	
+4707	E-Z Cook&trade; oven	
+4708	My First Shaker&trade;	
+4731	nest egg	100	150
+4744	PlexiPips	
+4745	Wax Flask	
+4746	Pain Dip	
+4756	bag of bones	
+4757	Stabonic scroll	
+4758	candy skeleton	
+4759	Grumpy Bumpkin's Pumpkin Seed Catalog	
+4760	packet of pumpkin seeds	
+4761	pumpkin	
+4762	huge pumpkin	
+4765	pumpkin juice	
+4771	ginormous pumpkin	
+4829	robot reindeer protocol P.R.A.N.C.E.R.	
+4830	robot reindeer protocol D.A.S.H.E.R.	
+4831	robot reindeer protocol D.O.N.N.E.R.	
+4832	robot reindeer protocol V.I.X.E.N.	
+4833	robot reindeer protocol C.U.P.I.D.	
+4834	robot reindeer protocol D.A.N.C.E.R.	
+4835	robot reindeer protocol C.O.M.E.T.	
+4836	robot reindeer protocol B.L.I.T.Z.E.N.	
+4837	robot reindeer protocol R.U.D.O.L.P.H.	
+4838	robot reindeer protocol O.L.I.V.E.	
+4842	sleeping stocking	
+4843	Tales of a Kansas Toymaker	
+4844	The Joy of Wassailing	
+4851	chocolate cigar	
+4853	holly-flavored Hob-O	
+4855	Toot Oriole care package	
+4856	paperclip	
+4857	bottle of Blank-Out	
+4859	CRIMBCO Employee Handbook (chapter 1)	
+4860	CRIMBCO Employee Handbook (chapter 2)	
+4861	CRIMBCO Employee Handbook (chapter 3)	
+4862	CRIMBCO Employee Handbook (chapter 4)	
+4863	CRIMBCO Employee Handbook (chapter 5)	
+4864	portable photocopier	
+4865	deluxe fax machine	
+4866	Workytime Tea	
+4873	photocopied monster	
+4874	gaudy key	
+4875	BGE merchandise order form	
+4876	chocolate bath ball	
+4877	bacon bath ball	
+4878	incense bath ball	
+4879	myrrh-soaked, chocolate-covered bacon bath ball	
+4882	Dickory Farms Gift Basket	
+4883	toe jam	
+4885	traffic jam	
+4887	space jam	
+4889	motivational poster	
+4890	sack lunch	
+4891	bath ball gift set	
+4892	slow jam collection	
+4900	BGE temporary tattoo	
+4905	coal paperweight	
+4906	jingle bell	
+4908	Loathing Legion knife	
+4909	Loathing Legion many-purpose hook	
+4910	Loathing Legion moondial	
+4911	Loathing Legion necktie	
+4912	Loathing Legion electric knife	
+4913	Loathing Legion corkscrew	
+4914	Loathing Legion can opener	
+4915	Loathing Legion chainsaw	
+4916	Loathing Legion rollerblades	
+4917	Loathing Legion flamethrower	
+4918	Loathing Legion tattoo needle	
+4919	Loathing Legion defibrillator	
+4920	Loathing Legion double prism	
+4921	Loathing Legion tape measure	
+4922	Loathing Legion kitchen sink	
+4923	Loathing Legion abacus	
+4924	Loathing Legion helicopter	
+4925	Loathing Legion pizza stone	
+4926	Loathing Legion universal screwdriver	
+4927	Loathing Legion jackhammer	
+4928	Loathing Legion hammer	
+4929	Uncle Crimbo's Sack	
+4949	weremoose spit	
+4950	abominable blubber	
+4952	baggie of powdered sugar	
+4957	half-baked potion	
+4964	Evilometer	
+4965	Sorcerers of the Shore Grimoire	
+4966	Pack of Alice's Army Cards	
+4987	Pack of Alice's Army Foil Cards	
+5008	Single Alice's Army Foil	
+5010	evil eye	
+5011	Alice's Army Foil tattoo	
+5019	wasabi marble soda	
+5020	tobiko marble soda	
+5021	natto marble soda	
+5022	Alice's Army booster box	
+5023	elderly jawbreaker	
+5045	astral hot dog dinner	
+5046	astral six-pack	
+5047	Clan shower	
+5048	shard of double-ice	
+5052	handful of numbers	
+5053	Lars the Cyberian	
+5054	intriguing puzzle box	
+5057	Atomic Comic	
+5058	Red Pill	
+5060	mysterious present	
+5062	creepy voodoo doll	
+5077	box of Pok&euml;mann band-aids	
+5078	Pok&euml;mann band-aid	
+5086	correction fluid	
+5102	willyweed	
+5103	Nuclear Blastball	
+5104	fish juice box	
+5112	My Own Pen Pal kit	
+5113	packet of orchid seeds	
+5116	A. W. O. L. commendation	
+5124	Field Guide to Skeletal Anatomy	
+5131	Ultrasoldier Serum	
+5139	carton of astral energy drinks	
+5140	astral energy drink	
+5142	moon unit	
+5144	handful of honey	
+5145	honeypot	
+5157	Comet Drop	
+5167	synthetic dog hair pill	
+5168	distention pill	
+5170	transporter transponder	
+5171	Map to Safety Shelter Ronald Prime	
+5172	Map to Safety Shelter Grimace Prime	
+5180	Comet Pop	
+5181	Flan in the Moon	
+5182	1/6th Pound Cake	
+5183	Mint-in-box Moonthril Circlet	
+5184	Mint-in-box Moonthril Greaves	
+5185	Mint-in-box Moonthril Cuirass	
+5186	Mint-in-box Moonthril Flamberge	
+5187	Mint-in-box Moonthril Longbow	
+5188	honey stick	
+5189	double-ice gum	
+5192	corrupted data	
+5195	Banfoy's Boutique Order Form	
+5198	gooey paste	
+5199	beastly paste	
+5200	oily paste	
+5201	ectoplasmic paste	
+5202	greasy paste	
+5203	bug paste	
+5204	hippy paste	
+5205	orc paste	
+5206	demonic paste	
+5207	indescribably horrible paste	
+5208	fishy paste	
+5209	goblin paste	
+5210	pirate paste	
+5211	chlorophyll paste	
+5212	strange paste	
+5213	Mer-kin paste	
+5214	slimy paste	
+5215	penguin paste	
+5216	elemental paste	
+5217	cosmic paste	
+5218	hobo paste	
+5219	Crimbo paste	
+5220	Teachings of the Fist	
+5223	Tome of Clip Art	
+5226	box of Familiar Jacks	
+5232	borrowed time	
+5233	box of hammers	
+5257	potion of the field gar	
+5258	too legit potion	
+5259	Bright Water	
+5260	cold-filtered water	
+5261	graveyard snowglobe	
+5262	cool cat elixir	
+5263	potion of the captain's hammer	
+5264	potion of X-ray vision	
+5265	potion of the litterbox	
+5266	potion of animal rage	
+5267	potion of punctual companionship	
+5284	Gygaxian Libram	
+5285	d4	
+5286	d6	
+5287	d8	
+5288	d10	
+5289	d12	
+5290	d20	
+5294	kobold treasure hoard	100	10
+5297	dungeon dragon chest	100	450-500
+5300	Interview With You (a Vampire)	
+5301	Make-Your-Own-Vampire-Fangs kit	
+5302	your own black heart	
+5307	Haunted Sorority House staff guide	
+5312	ghostly body paint	
+5313	necrotizing body spray	
+5314	bite-me-red lipstick	
+5315	whisker pencil	
+5316	press-on ribs	
+5317	Rattlin' Chains	
+5318	Gummy Brains	
+5319	Blood 'n' Plenty	
+5320	Lobos Mints	
+5321	Sweet Sword	
+5328	sorority brain	
+5329	Nightstalker perfume	
+5330	drum of pomade	
+5341	The Necbronomicon	
+5343	The Necbronomicon (used)	
+5344	sorority girl's box	
+5345	Necbro wafers	
+5347	A Crimbo Carol, Ch. 1 (used)	
+5348	A Crimbo Carol, Ch. 2 (used)	
+5349	A Crimbo Carol, Ch. 3 (used)	
+5350	A Crimbo Carol, Ch. 4 (used)	
+5351	A Crimbo Carol, Ch. 5 (used)	
+5352	A Crimbo Carol, Ch. 6 (used)	
+5354	The Art of Slapfighting (used)	
+5355	Uncle Romulus (used)	
+5356	A Beginner's Guide to Charming Snakes (used)	
+5357	Zu Mannk&auml;se Dienen (used)	
+5358	Autobiography Of Dynamite Superman Jones (used)	
+5359	Inigo's Incantation of Inspiration (crumpled)	
+5360	Tales of a Kansas Toymaker (used)	
+5361	The Joy of Wassailing (used)	
+5362	CRIMBCO Employee Handbook (chapter 1) (used)	
+5363	CRIMBCO Employee Handbook (chapter 2) (used)	
+5364	CRIMBCO Employee Handbook (chapter 3) (used)	
+5365	CRIMBCO Employee Handbook (chapter 4) (used)	
+5366	CRIMBCO Employee Handbook (chapter 5) (used)	
+5367	Field Guide to Skeletal Anatomy (shredded)	
+5368	Ellsbury's journal (used)	
+5379	groose grease	
+5395	peppermint sprout	
+5396	peppermint twist	
+5403	Mint Salton Pepper's Peppermint Seed Catalog	
+5404	Peppermint Pip Packet	
+5415	licorice root	
+5416	banana supersucker	
+5417	pear supersucker	
+5418	lime supersucker	
+5419	kumquat supersucker	
+5420	strawberry supersucker	
+5434	DNOTC Box	
+5436	fudge lily	
+5438	fluid of fudge-finding	
+5441	wand of fudge control	
+5444	devilish folio	
+5454	red gummi ingot	
+5455	green gummi ingot	
+5456	yellow gummi ingot	
+5457	Fudgie Roll	
+5463	Libram of Resolutions	
+5464	resolution: be wealthier	
+5465	resolution: be happier	
+5466	resolution: be stronger	
+5467	resolution: be smarter	
+5468	resolution: be sexier	
+5469	resolution: be feistier	
+5470	resolution: be kinder	
+5471	resolution: be more adventurous	
+5472	resolution: be luckier	
+5473	giant red gummi ingot	
+5474	giant green gummi ingot	
+5475	giant yellow gummi ingot	
+5476	gummi salamander	
+5477	gummi snake	
+5478	gummi canary	
+5491	trilobite candy mold	
+5492	ammonite candy mold	
+5493	belemnite candy mold	
+5494	gummi trilobite	
+5495	gummi ammonite	
+5496	gummi belemnite	
+5497	all-year sucker	
+5498	heart of dark chocolate	
+5500	Fuzzby	
+5501	Jackass Plumber home game	
+5502	Trivial Avocations board game	
+5505	pack of pogs	
+5508	Uncle Greenspan's Bathroom Finance Guide	
+5509	bottle of bubbles	
+5510	wind-up meatcar	
+5511	Trivial Avocations Card: What?	
+5512	Trivial Avocations Card: When?	
+5513	Trivial Avocations Card: Who?	
+5514	Trivial Avocations Card: Where?	
+5526	Atomic Pop	
+5528	whimpering willow bark	
+5530	baobab sap	
+5531	cup of hickory chicory	
+5532	magnolia blossom	
+5533	Mortimer's nostrum	
+5535	Marvin's marvelous pill	
+5537	purple prose pen	
+5540	desktop zen garden	
+5541	Vivian's Vitamin	
+5546	The Thorax's Codex of Tormenting Plants	
+5547	Clancy's sackbut	
+5548	Ghost Pinching Quarterly	
+5549	Clancy's crumhorn	
+5550	The Snitch's Manifesto	
+5551	Clancy's lute	
+5553	can of Rain-Doh	
+5564	Rain-Doh box full of monster	
+5643	stone wool	
+5644	shiny stones	100	140-160
+5646	ancient calendar fragment	
+5648	Boris's Helm	
+5650	Boris's Helm (askew)	

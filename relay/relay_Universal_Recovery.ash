@@ -1,6 +1,6 @@
 // UI for Universal_recovery.ash by Bale
 // http://kolmafia.us/showthread.php?t=1780
-string thisver = "1.2";
+string thisver = "1.3";
 
 // Beginning of copy-paste from jasonharper's htmlform.ash from http://kolmafia.us/showthread.php?3842
 
@@ -114,7 +114,7 @@ boolean write_check(boolean ov, string name, string label, boolean after) {
 
 // this mimic's jason's old write_check
 boolean write_check(boolean ov, string name, string label) {
-	write_check(ov, name, label, false);
+	return write_check(ov, name, label, false);
 }
 
 void numeric_dropdown(string pref, string fail, string message) {
@@ -130,24 +130,44 @@ void numeric_dropdown(string pref, string fail, string message) {
 	finish_select();
 }
 
+void zombie_dropdown(string pref, string fail, string message) {
+	set_property(pref, write_select(get_property(pref), pref, ""));
+	if(fail != "") {
+		write_option(fail, "-0.05");
+		write_option(message+ "0", "0.0");
+	}
+	foreach i in $ints[1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 18, 22, 26, 30, 34, 38, 42, 46, 50]
+		write_option(message+ i, i);
+	if(fail == "")
+		write_option(message+ "55", "55");
+	finish_select();
+}
+
 void levels() {
+	boolean zombie = my_path() == "Zombie Slayer";
 //	writeln("<tr><th width=\"50%\" align=left>Stop automation</th><th align=left>Mana burning:</th></tr>");
-	writeln("<tr><th width=\"50%\" align=left>Restore your Health:</th><th align=left>Restore your Mana:</th></tr>");
+	writeln("<tr><th width=\"50%\" align=left>Restore your Health:</th><th align=left>"+(zombie? "Restore your Zombie Horde": "Restore your Mana")+":</th></tr>");
 	write("<tr><td>");
 	numeric_dropdown("hpAutoRecovery", "Do not auto-recover health", "Auto-recover health at ");
 	write("</td><td>");
-	numeric_dropdown("mpAutoRecovery", "Do not auto-recover mana", "Auto-recover mana at ");
+	if(zombie)
+		zombie_dropdown("baleUr_ZombieAuto", "Do not auto-recover Horde", "Auto-recover Horde at ");
+	else
+		numeric_dropdown("mpAutoRecovery", "Do not auto-recover mana", "Auto-recover mana at ");
 	writeln("</td></tr>");
 	write("<tr><td>");
 	numeric_dropdown("hpAutoRecoveryTarget", "", "Try to recover health up to ");
 	write("</td><td>");
-	numeric_dropdown("mpAutoRecoveryTarget", "", "Try to recover mana up to ");
+	if(zombie)
+		zombie_dropdown("baleUr_ZombieTarget", "", "Try to recover Horde up to ");
+	else
+		numeric_dropdown("mpAutoRecoveryTarget", "", "Try to recover mana up to ");
 	writeln("</td></tr>");
 	write("<tr><td align=center>");
 	if(write_button("hp", "Update & Restore HP"))
 		restore_hp(0);
 	write("</td><td align=center>");
-	if(write_button("mp", "Update & Restore MP"))
+	if(write_button("mp", "Update & Restore "+(zombie? "Horde": "MP")))
 		restore_mp(0);
 	writeln("</td></tr>");
 }

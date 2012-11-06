@@ -129,6 +129,12 @@ void build_custom() {
   // stealing! add directly to queue[] rather than custom actions
    if (should_pp && (intheclear() || has_goal(m) > 0) && contains_text(page,"form name=steal"))
       enqueue(to_event("pickpocket","",1));
+  // Smash & Graaagh
+  if (have_skill($skill[graaagh]))
+      foreach i in item_drops(m) if (has_goal(i) > 0) {
+	      custom[count(custom)] = get_action($skill[graaagh]);
+		  break;
+	  }
   // safe salve
    if (have_skill($skill[saucy salve]) && !happened($skill[saucy salve]) && (my_stat("hp") < m_dpr(0,0) ||
        min(round(to_float(get_property("hpAutoRecoveryTarget"))*to_float(my_maxhp())) - my_stat("hp"),12)*meatperhp > mp_cost($skill[saucy salve])*meatpermp))
@@ -138,13 +144,13 @@ void build_custom() {
       custom[count(custom)] = to_event("summonspirit","",1);
   // flyers
    foreach flyer in $items[jam band flyers, rock band flyers] if (item_amount(flyer) > 0 && get_property("flyeredML").to_int() < 10000 &&
-      (to_boolean(vars["flyereverything"]) || $monsters[guy made of bees, cyrus the virus] contains m) && !happened(flyer) &&
-      ($monsters[guy made of bees, cyrus the virus] contains m ^
-       !($locations[battlefield (hippy uniform), battlefield (frat uniform)] contains my_location())))
+      (to_boolean(vars["flyereverything"]) || m.base_attack.to_int() >= 10000 - get_property("flyeredML").to_int()) && !happened(flyer) &&
+      !($locations[battlefield (hippy uniform), battlefield (frat uniform)] contains my_location()))
      custom[count(custom)] = to_event("use "+to_int(flyer),to_spread(0),to_spread(to_string(m_regular()*(1-m_hit_chance()))),"!! flyeredML +"+monster_attack(m),1);
   // olfaction
    set_autoputtifaction();
-   if (have_skill($skill[olfaction]) && have_effect($effect[form of bird]) == 0 && have_effect($effect[on the trail]) == 0 && should_olfact)
+   if (have_skill($skill[olfaction]) && have_effect($effect[form of bird]) == 0 && have_effect($effect[on the trail]) == 0 &&
+       should_olfact && !happened($skill[olfaction]))
       custom[count(custom)] = to_event("skill 19","mp -"+mp_cost($skill[olfaction]),1);
   // putty                                                                                          TODO: black box!
    if (item_amount($item[spooky putty sheet]) > 0 && to_int(get_property("spookyPuttyCopiesMade")) < 5 &&
@@ -158,7 +164,7 @@ void build_custom() {
    }
   // insults
    if (my_location().zone == "Island" && have_item($item[pirate fledges]) == 0 &&
-       contains_text(m.to_string()," Pirate") && monster_attack(m) - monster_level_adjustment() < 100)
+       m.phylum == $phylum[pirate] && monster_attack(m) - monster_level_adjustment() < 100)
      foreach i in $items[massive manual of marauder mockery, big book of pirate insults]
        if (item_amount(i) > 0 && !happened(i)) {
           int insultsknown;
@@ -180,7 +186,7 @@ void build_custom() {
          custom[count(custom)] = to_event("use "+i,get_sphere(""),1);
   // release the boots!
    if (my_familiar() == $familiar[stomping boots] && my_location() != $location[none] && get_property("bootsCharged") == "true" && 
-       count(get_monsters(my_location())) > 1 && !($items[none,gooey paste] contains to_paste(m))) {
+       count(get_monsters(my_location())) > 1 && !($items[none,gooey paste] contains to_paste(m)) && !m.boss) {
 	  boolean belongs() { foreach i,mon in get_monsters(my_location()) if (mon == m) return true; return false; }
       boolean[item] pastegoals;
       for i from 5198 to 5219 if (is_goal(to_item(i))) pastegoals[to_item(i)] = true;
@@ -295,8 +301,7 @@ void enqueue_custom() {
 }
 string try_custom() {
    enqueue_custom();
-   if (count(queue) > 0) return macro();
-   return page;
+   return macro();
 }
 
 
@@ -340,7 +345,9 @@ advevent to_combo(effect which) {
             switch (rec.type) {
                case "p": continue;
                case "c": if (item_type(rec.drop) == "shirt" && !have_skill($skill[torso awaregness])) continue;
-                         if (!is_displayable(rec.drop)) continue;       // TODO: filter PM guardian larvae here when possible
+                         if (!is_displayable(rec.drop)) continue;
+                         if (item_type(rec.drop) == "pasta guardian" && my_class() != $class[pastamancer]) break;  // skip pasta guardians for non-PMs
+                         if (rec.drop == $item[bunch of square grapes] && my_level() < 11) break;  // grapes drop at 11
             }
             prev = item_val(rec.drop,rec.rate);
             if (which != $effect[none]) {
@@ -384,8 +391,7 @@ void enqueue_combos() {
 }
 string try_combos() {
    enqueue_combos();
-   if (count(queue) > 0) return macro();
-   return page;
+   return macro();
 }
 
 // special cases for stasis
@@ -414,43 +420,39 @@ boolean is_our_huckleberry() {
    return vprint("This monster is not your huckleberry.","black",-9);
 }
 
+string stasis_repeat() {       // the string of repeat conditions for stasising
+   int expskill() { int res; foreach s in $skills[] if (s.combat && have_skill(s)) res = max(res,mp_cost(s)); return res; }
+   return "!hpbelow "+my_stat("hp")+                                                        // hp
+      (my_stat("hp") < my_maxhp() ? " && hpbelow "+my_maxhp() : "")+
+      " && !mpbelow "+my_stat("mp")+                                                        // mp
+      (my_stat("mp") < min(expskill(),my_maxmp()) ? " && mpbelow "+min(expskill(),my_maxmp()) : "")+
+      " && !pastround "+floor(maxround - 3 - kill_rounds(smack))+                           // time to kill
+      ((have_equipped($item[crown of thrones])) ? " && !match \"acquire an item\"" : "")+   // CoT
+      ((my_fam() == $familiar[hobo monkey]) ? " && !match \"hands you some Meat\"" : "")+   // famspent
+      ((my_fam() == $familiar[gluttonous green ghost]) ? " && match ggg.gif" : "")+
+      ((my_fam() == $familiar[slimeling]) ? " && match slimeling.gif" : "");
+}
+
 string stasis() {
    if ($monsters[naughty sorority nurse, the naughty sorceress, the naughty sorceress (2),
        pufferfish, bonerdagon] contains m) return page;    // never stasis these monsters
    if (m == $monster[quantum mechanic] && m_hit_chance() > 0.1) return page;  // avoid teleportitis
-   int flag;
-   advevent plink = stasis_action();
-   advevent smack = attack_action();
+   stasis_action();
+   attack_action();
    while ((to_profit(plink) > to_float(vars["BatMan_profitforstasis"]) || is_our_huckleberry()) &&
          (round < maxround - 3 - kill_rounds(smack) && die_rounds() > kill_rounds(smack))) {
       vprint("Top of the stasis loop.",9);
-      flag = round;
      // special actions
-      try_custom();
-      try_combos();
-      int expskill() {
-         int res;
-         foreach s in $skills[] if (s.combat && have_skill(s)) res = max(res,mp_cost(s));
-         return res;
-      }
+      enqueue_custom();
+      enqueue_combos();
      // stasis action as picked by BatBrain -- macro it until anything changes
-      if (round == flag) {
-         if (plink.id == "" && vprint("You don't have any stasis actions.","olive",4)) break;
-         macro(plink,"!hpbelow "+my_stat("hp")+
-            (my_stat("hp") < my_maxhp() ? " && hpbelow "+my_maxhp() : "")+
-            " && !mpbelow "+my_stat("mp")+
-            (my_stat("mp") < min(expskill(),my_maxmp()) ? " && mpbelow "+min(expskill(),my_maxmp()) : "")+
-            " && !pastround "+floor(maxround - 3 - kill_rounds(regular(1)))+
-            ((have_equipped($item[crown of thrones])) ? " && !match \"acquire an item\"" : "")+
-            ((my_fam() == $familiar[hobo monkey]) ? " && !match \"hands you some Meat\"" : "")+
-            ((my_fam() == $familiar[gluttonous green ghost]) ? " && match ggg.gif" : "")+
-            ((my_fam() == $familiar[slimeling]) ? " && match slimeling.gif" : ""));
-      }
+      if (plink.id == "" && vprint("You don't have any stasis actions.","olive",4)) break;
+      macro(plink, stasis_repeat());
       if (finished()) break;
-      plink = stasis_action();
-      smack = attack_action();
+      stasis_action();       // recalculate stasis/attack actions
+      attack_action();
    }
-   vprint("Stasis loop complete.",9);
+   vprint("Stasis loop complete"+(count(queue) > 0 ? " (queue still contains "+count(queue)+" actions)." : "."),9);
    return page;
 }
 
@@ -461,7 +463,7 @@ setvar("puttybountiesupto",19);
 setvar("ftf_olfact","blooper, dairy goat, shaky clown, zombie waltzers, goth giant, knott yeti, hellion, violent fungus","list of monster");
 setvar("ftf_grin","procrastination giant","list of monster");
 setvar("ftf_yellow","knob goblin harem girl","list of monster");
-check_version("SmartStasis","SS","3.14",1715);
+string SSver = check_version("SmartStasis","SS","3.15",1715);
 
 void main(int initround, monster foe, string pg) {
    act(pg);
@@ -475,16 +477,21 @@ void main(int initround, monster foe, string pg) {
          custom[count(custom)] = get_action("use 2563"); break;
       case $monster[huge ghuol]: for i from 1 upto item_amount($item[can of ghuol-b-gone])
          custom[count(custom)] = get_action("use 2565"); break;
+      case $monster[protector spectre]:
+      case $monster[ancient protector spirit]: if (item_amount($item[Shard of double-ice]) > 0)
+         custom[count(custom)] = get_action("use 5048"); break;
    }
-   enqueue_custom();
-   if (queue[0].id == "pickpocket" && my_class() == $class[disco bandit]) try_custom();
+   if (count(queue) > 0 && queue[0].id == "pickpocket" && my_class() == $class[disco bandit]) try_custom();
+    else enqueue_custom();
   // combos
    build_combos();
-   try_combos();
+   if (($familiars[hobo monkey, gluttonous green ghost, slimeling] contains my_fam() && !happened("famspent")) || have_equipped($item[crown of thrones])) try_combos();
+    else enqueue_combos();
   // stasis loop
    stasis();
    if (round < maxround && !is_our_huckleberry() && get_action($skill[entangling noodles]).stun > 0 &&
         m_dpr(0,0)*2*meatperhp > mp_cost($skill[entangling noodles])*meatpermp)
-      macro($skill[entangling noodles]);
+      enqueue($skill[entangling noodles]);
+   macro();
    vprint("SmartStasis complete.",9);
 }

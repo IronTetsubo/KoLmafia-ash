@@ -101,23 +101,13 @@ string join(string[int] pieces, string glue) {
    return res;
 }
 
-// human-readable number (adds commas for large numbers, truncates floats at specified place)
+// human-readable number (formats the number with localized grouping/decimal separators, rounds floats at specified place)
 string rnum(int n) {
-   buffer cr;
-   boolean neg;
-   if (n < 0) { neg = true; n = -n; }
-   cr.append(to_string(n));
-   if (cr.length() > 3) for i from 1 to floor((cr.length()-1) / 3.0)
-      cr.insert(cr.length()-(i*3)-(i-1),",");
-   return neg ? "-"+to_string(cr) : to_string(cr);
+   return to_string(n,"%,d");
 }
 string rnum(float n, int place) {
-   if (to_float(round(n)) == n || place < 1) return rnum(round(n));
-   buffer res;
-   res.append(rnum(truncate(n))+".");
-   if (n < 0 && n > -1) res.insert(0,"-");
-   res.append(excise(to_string(round(n*10.0**place)/10.0**place),".",""));
-   return to_string(res);
+   if (place < 1 || to_float(round(n)) == to_float(to_string(n,"%,."+place+"f"))) return rnum(round(n));
+   return replace_all(create_matcher("0+$", to_string(n,"%,."+place+"f")),"");
 }
 string rnum(float n) { return rnum(n,2); }
 
@@ -131,7 +121,7 @@ void set_avg(float toadd, string whichprop) {
    float a = to_float(excise(initv,"",":"));
    float b = to_float(excise(initv,":",""));
    a = ((a * b)+toadd) / (b+1);
-   b = b + 1;
+   b += 1;
    set_property(whichprop,a+":"+b);
 }
 float get_avg(string whichprop) {
@@ -146,7 +136,7 @@ float get_avg(string whichprop) {
 // + - * / ( ) have their usual mathematical meaning and precedence.
 // ^ is exponentiation, with the highest precedence.
 // Math functions: ceil(x) floor(x) sqrt(x) min(x,y) max(x,y)
-// Text functions (can use a maximum of ONE!):
+// Text functions:
 //   loc(text), zone(text) - 1 if the current adventure location or zone contains the specified text, 0 elsewise.
 //   fam(text) - 1 if the player's familiar type contains the text, else 0.
 //   pref(text) - must be used on preferences with a float value ONLY - merely retrieving an integer pref will corrupt it!
@@ -222,14 +212,14 @@ boolean load_current_map(string fname, aggregate dest) {
    file_to_map(fname+".txt",dest);
    string key = "map_"+fname+".txt";
    if (count(zv) == 0) file_to_map("zversions.txt",zv);
-   if (zv[key].vdate == today_to_string()) return (count(dest) > 0);
+   if (zv[key].vdate == today_to_string() && count(dest) > 0) return true;
    zv[key].vdate = today_to_string();
    string rem = visit_url("http://zachbardon.com/mafiatools/autoupdate.php?f="+fname+"&act=getver");
    if (zv[key].ver == rem && count(dest) > 0) {
       map_to_file(zv,"zversions.txt");
       return vprint("You have the latest "+fname+".txt.  Will not check again today.",3);
    }
-   vprint("Updating "+fname+".txt from '"+zv[key].ver+"' to '"+rem+"'...",1);
+   vprint("Updating "+fname+".txt "+(count(dest) > 0 ? "from '"+zv[key].ver+"' " : "")+"to '"+rem+"'...",1);
    if (!file_to_map("http://zachbardon.com/mafiatools/autoupdate.php?f="+fname+"&act=getmap",dest) || count(dest) == 0)
       return vprint("Error loading "+fname+".txt from the Map Manager.","red",-1);
    zv[key].ver = rem;
@@ -257,7 +247,6 @@ void setvar(string varname,string dfault,string type) {
       }
       return;
    }
-  // visit_url("http://zachbardon.com/mafiatools/wossman.php?v="+varname+"&t="+type);
    vars[varname] = dfault;
    vprint("New ZLib "+type+" setting: "+varname+" => "+dfault,"purple",4);
    updatevars();
@@ -293,6 +282,69 @@ boolean be_good(string johnny) {
    }
    return true;
 }
+
+// check the mall price of an item
+// expirydays: optional, default 0. the number of days historical_price is valid, after which mall_price is used
+// combatsafe: optional, default false.  specify as true to override expirydays and force the function to use only historical price
+int mall_val(item it, float expirydays, boolean combatsafe) {
+   if (!is_tradeable(it)) return 0;
+   if (historical_price(it) > 0 && (combatsafe || expirydays > 99 || historical_age(it) < expirydays)) return historical_price(it);
+   return combatsafe ? 0 : mall_price(it);
+}
+int mall_val(item it, float expirydays) { return mall_val(it,expirydays,false); }
+int mall_val(item it, boolean combatsafe) { return mall_val(it,0,combatsafe); }
+
+// returns the result of mall_val, or autosell if mall_val isn't more than mallmin
+int sell_val(item it, float expirydays, boolean combatsafe) {
+   int mall = mall_val(it,expirydays,combatsafe);
+   if (mall > max(100,2*autosell_price(it))) return mall;
+   return autosell_price(it);
+}
+int sell_val(item it, float expirydays) { return sell_val(it,expirydays,false); }
+int sell_val(item it, boolean combatsafe) { return sell_val(it,0,combatsafe); }
+int sell_val(item it) { return sell_val(it,0,false); }
+
+// return a map of tower items (true if detected by telescope, false if possibly needed)
+boolean[item] tower_items(boolean combatsafe) {
+   boolean[item] res;
+   switch (my_path()) {
+      case "Bees Hate You": res[$item[tropical orchid]] = true; return res;
+      case "Bugbear Invasion": return res;
+   }
+   if (get_property("lastTelescopeReset").to_int() < my_ascensions() && !combatsafe)         // tower_items() contains X : >0% chance
+      visit_url("campground.php?action=telescopelow");                                       // tower_items(X) == true : 100% chance
+   item[string] t;
+   t["catch a glimpse of a flaming katana"] = $item[frigid ninja stars];
+   t["catch a glimpse of a translucent wing"] = $item[spider web];
+   t["see a fancy-looking tophat"] = $item[sonar-in-a-biscuit];
+   t["see a flash of albumen"] = $item[black pepper];
+   t["see a giant white ear"] = $item[pygmy blowgun];
+   t["see a huge face made of Meat"] = $item[meat vortex];
+   t["see a large cowboy hat"] = $item[chaos butterfly];
+   t["see a periscope"] = $item[photoprotoneutron torpedo];
+   t["see a slimy eyestalk"] = $item[fancy bath salts];
+   t["see a strange shadow"] = $item[inkwell];
+   t["see moonlight reflecting off of what appears to be ice"] = $item[hair spray];
+   t["see part of a tall wooden frame"] = $item[disease];
+   t["see some amber waves of grain"] = $item[bronzed locust];
+   t["see some long coattails"] = $item[Knob Goblin firecracker];
+   t["see some pipes with steam shooting out of them"] = $item[powdered organs];
+   t["see some sort of bronze figure holding a spatula"] = $item[leftovers of indeterminate origin];
+   t["see the neck of a huge bass guitar"] = $item[mariachi G-string];
+   t["see what appears to be the North Pole"] = $item[NG];
+   t["see what looks like a writing desk"] = $item[plot hole];
+   t["see the tip of a baseball bat"] = $item[baseball];
+   t["see what seems to be a giant cuticle"] = $item[razor-sharp can lid];
+   t["see a pair of horns"] = $item[barbed-wire fence];
+   t["see a formidable stinger"] = $item[tropical orchid];
+   t["see a wooden beam"] = $item[stick of dynamite];
+   for i from 1 upto get_property("telescopeUpgrades").to_int()
+      if (t contains get_property("telescope"+i)) res[t[get_property("telescope"+i)]] = true;
+   if (count(res) < 6) foreach s,it in t if (!res[it]) res[it] = false;
+     else if (count(res) < 7) foreach i in $items[barbed-wire fence, stick of dynamite, tropical orchid] if (!res[i]) res[i] = false;
+   return res;
+}
+boolean[item] tower_items() { return tower_items(false); }
 
 // returns how many of an item you have ONLY in inventory and equipped
 int have_item(string tolookup) {
@@ -685,7 +737,7 @@ setvar("threshold",4);
 setvar("unknown_ml",170);
 setvar("is_100_run",$familiar[none]);
 setvar("defaultoutfit","current");
-check_version("ZLib","zlib","r35",2072);
+check_version("ZLib","zlib","r37",2072);
 
 void main(string setval) {
    if (!setval.contains_text(" = ")) {

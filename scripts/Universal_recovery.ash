@@ -2,7 +2,7 @@
 // http://kolmafia.us/showthread.php?t=1780
 script "Universal_recovery.ash";
 notify "Bale";
-string thisver = "3.9.4";		// This is the script's version!
+string thisver = "3.10.6";		// This is the script's version!
 
 // To use this script, put Universal_recovery in the /script directory. 
 // Then in the Graphical CLI type:
@@ -61,11 +61,14 @@ int Verbosity = get_property("baleUr_Verbosity").default_int(1);
 int baleUr_Purchase = get_property("baleUr_Purchase").default_int(3);
 boolean buy_mall = baleUr_Purchase > 2 || (baleUr_Purchase == 1 && get_property("autoSatisfyWithMall").to_boolean());
 boolean buy_npc = baleUr_Purchase > 1 || (baleUr_Purchase == 1 && get_property("autoSatisfyWithNPCs").to_boolean());
-boolean fist_safely = !get_property("baleUr_FistPurchase").to_boolean() && (my_path() == "6"  || my_path() == "Way of the Surprising Fist");
+boolean fist_safely = !get_property("baleUr_FistPurchase").to_boolean() && my_path() == "Way of the Surprising Fist";
 if(fist_safely) {
 	buy_mall = false;
 	buy_npc = false;
 }
+boolean bees = my_path() == "Bees Hate You";
+boolean boris = my_path() == "Avatar of Boris";
+boolean zombie = my_path() == "Zombie Slayer";
 	
    // If this is set to true, this script will not use the hot tub. That way you can save it for use in the Slime Tube.
 boolean DontUseHotTub = get_property("baleUr_DontUseHotTub").to_boolean();
@@ -86,8 +89,13 @@ int hp_autoheal, hp_autotarget, mp_autoheal, mp_autotarget;
 void set_autohealing() {
 	hp_autoheal = floor(my_maxhp() * to_float(get_property("hpAutoRecovery")));
 	hp_autotarget = ceil(my_maxhp() * to_float(get_property("hpAutoRecoveryTarget")));
-	mp_autoheal = floor(my_maxmp() * to_float(get_property("mpAutoRecovery")));
-	mp_autotarget = ceil(my_maxmp() * to_float(get_property("mpAutoRecoveryTarget")));
+	if(zombie) {
+		mp_autoheal = floor(get_property("baleUr_ZombieAuto") == ""? -1: to_float(get_property("baleUr_ZombieAuto")));
+		mp_autotarget = get_property("baleUr_ZombieTarget").to_int();
+	} else {
+		mp_autoheal = floor(floor(my_maxmp() * to_float(get_property("mpAutoRecovery"))));
+		mp_autotarget = ceil(my_maxmp() * to_float(get_property("mpAutoRecoveryTarget")));
+	}
 } set_autohealing();
 
 int objective;			// This is the target passed to the recoveryScript.
@@ -106,7 +114,7 @@ boolean spleenfam =have_familiar($familiar[Green Pixie]) || have_familiar($famil
 	|| have_familiar($familiar[Pair of Stomping Boots]);
 	// Use Medicinal Herb's medicinal herbs?
 boolean use_herb = contains_text(hpAutoRecoveryItems, "medicinal herb's medicinal herbs")
-	&& my_path() != "Bees Hate You" && my_path() != "Avatar of Boris" && my_level() > 2
+	&& !(bees || boris || zombie) && my_level() > 2
 	&& (my_primestat() == $stat[muscle] || item_amount($item[Medicinal Herb's medicinal herbs]) > 0
 	|| (my_class() == $class[accordion thief] && my_level() >= 9));
 	// Number of free Disco Rests, HP restored by resting at camp, MP restored by resting at camp.
@@ -162,7 +170,7 @@ void restore_values() {
 		remove heal [egg];
 	// Add pseudo items that can be used to MAKE recovery items.
 	heal[$item[Palm frond]] = new restorative_info(18, 22, 18, 22, 20.0, 20.0);
-	if(my_path() != "Bees Hate You" && (mallcore || contains_text(hpAutoRecoveryItems, "really thick bandage")))
+	if(!bees && (mallcore || contains_text(hpAutoRecoveryItems, "really thick bandage")))
 		heal[$item[mummy wrapping]] = new restorative_info(50, 60, 0, 0, 55.0, 0.0);
 	if(mallcore)  // This is only handled freely in mallcore mode
 		heal[$item[six-pack of New Cloaca-Cola]] = new restorative_info(0, 0, 840, 960, 0.0, 900.0);
@@ -177,7 +185,7 @@ void restore_values() {
 		heal[$item[beer-scented teddy bear]] = new restorative_info(0, 0, 15, 20, 0.0, 17.5);
 		heal[$item[comfy pillow]] = new restorative_info(20, 30, 0, 0, 25.0, 0.0);
 	}
-	if(my_path() == "Bees Hate You")
+	if(bees)
 		foreach it in heal
 			if(it.to_string().to_lower_case().index_of("b") != -1)
 				remove heal[it];
@@ -188,31 +196,13 @@ void restore_values() {
 // It assumes that rpps are to be used to heal with only if the character does not have funkslinging.
 // If out of ronin and hardcore, then this function will never be called.
 void shadow_prep() {
-	int shadowKill = 6; // Mafia insists on having 6 even though only 5 are needed
-	if(have_skill($skill[Ambidextrous Funkslinging])) {
-		int stock = available_amount($item[gauze garter]) + available_amount($item[filthy poultice]);
-		if(stock <= shadowKill) {
-			gg = item_amount($item[gauze garter]);
-			fp = item_amount($item[filthy poultice]);
-		} else {
-			stock = shadowKill - closet_amount($item[gauze garter]) - closet_amount($item[filthy poultice]);
-			if(stock <0) stock = 0;
-			if(stock > item_amount($item[gauze garter])) {
-				gg = item_amount($item[gauze garter]);
-				fp = stock - gg;
-			} else {
-				gg = stock;
-				fp = 0;
-			}
-		}
-	} else
-		rpp = max(4 - closet_amount($item[red pixel potion]), 0).min(item_amount($item[red pixel potion]));
-	if(!contains_text(hpAutoRecoveryItems, "red pixel potion"))
-		rpp = item_amount($item[red pixel potion]);
-	if(!contains_text(hpAutoRecoveryItems, "filthy poultice"))
-		fp = item_amount($item[filthy poultice]);
-	if(!contains_text(hpAutoRecoveryItems, "gauze garter"))
-		gg = item_amount($item[gauze garter]);
+	int getable(item i, int need) {
+		return min(item_amount(i) + closet_amount(i), max(0, need));
+	}
+	rpp = (!have_skill($skill[Ambidextrous Funkslinging]) && getable($item[red pixel potion], 4) > 0)? 1: 0;
+	gg = getable($item[gauze garter], 6 - rpp);
+	fp = getable($item[filthy poultice], 6 - rpp - gg);
+	rpp = rpp + getable($item[red pixel potion], 4 - rpp - gg - fp);
 }
 
 // Will return true if the user is afflicted with a given status effect
@@ -324,6 +314,8 @@ boolean populate_skills(int target) {
 	if(have_skill($skill[Disco Nap])) skills[$skill[Disco Nap]].ave = 20;
 	if(have_skill($skill[Lasagna Bandages])) skills[$skill[Lasagna Bandages]].ave =20;
 	if(have_skill($skill[Laugh It Off])) skills[$skill[Laugh It Off]].ave =1.5;
+	if(have_skill($skill[Bite Minion])) skills[$skill[Bite Minion]].ave =max(my_maxhp()/10, 10);
+	if(have_skill($skill[Devour Minions])) skills[$skill[Devour Minions]].ave =max(my_maxhp()/2, 20);
 	foreach key in skills
 		skills[key].mp = max(mp_cost(key) + mana_mod, 1);
 	return true;
@@ -373,15 +365,23 @@ int for_use(item it) {
 	case $item[New Cloaca-Cola]:
 		return item_amount(it) + 6 * item_amount($item[six-pack of New Cloaca-Cola]); 
 	case $item[mummy wrapping]:
+		if(!contains_text(hpAutoRecoveryItems, "really thick bandage")) return 0;
 	case $item[Palm frond]:
 		int q = item_amount(it);
 		return q %2 == 1 ? q-1 : q;
-	case $item[red pixel potion]: 
+	case $item[red pixel potion]:
+		if(!contains_text(hpAutoRecoveryItems, to_string(it))) return 0;
 		return item_amount(it) - rpp;
 	case $item[gauze garter]: 
+		if(!contains_text(hpAutoRecoveryItems, to_string(it))) return 0;
 		return item_amount(it) - gg;
 	case $item[filthy poultice]: 
+		if(!contains_text(hpAutoRecoveryItems, to_string(it))) return 0;
 		return item_amount(it) - fp;
+	case $item[Medicinal Herb's medicinal herbs]:
+	case $item[scroll of drastic healing]:
+	case $item[scented massage oil]:
+		if(!contains_text(hpAutoRecoveryItems, to_string(it))) return 0;
 	case reserve:
 		return max(0, item_amount(it) -1);
 	case reserve_purch:
@@ -402,7 +402,7 @@ boolean purchase(int q, item it) {
 	default:
 		price = historical_price(it);
 	}
-	if(buy(q- for_use(it), it, ceil(price*1.25)) > 0 || for_use(it) > 0)
+	if(buy(q- for_use(it), it, min(ceil(price*1.25),get_property("autoBuyPriceLimit").to_int())) > 0 || for_use(it) > 0)
 		return true; 	// for_use() needs to be checked both before and after that purchase ;)
 	return false;
 }
@@ -430,8 +430,9 @@ int inv_quant(item it, int amount, string type){
 		quantity = floor(roughquantity);
 		if(ceil(roughquantity) * heal[it].maxhp *.95 + my_hp() <= my_maxhp())
 			quantity = ceil(roughquantity);
-		while(quantity * heal[it].avemp *.95 + my_mp() > my_maxmp() && quantity > 0)
-			quantity = quantity - 1; // If I'm in hardcore, the item is too valuable to over-restore the other stat.
+		if(!zombie)
+			while(quantity * heal[it].avemp *.95 + my_mp() > my_maxmp() && quantity > 0)
+				quantity = quantity - 1; // If I'm in hardcore, the item is too valuable to over-restore the other stat.
 	}
 	quantity = min(quantity, for_use(it));
 	if((it == $item[Palm frond] || it == $item[mummy wrapping]) && quantity %2 == 1 )
@@ -732,9 +733,9 @@ string meatpermp() {
 	switch {
 	case buy_mmj:
 		return to_string(100.0/ heal[$item[magical mystery juice]].avemp);
-	case black_market_available() && my_path() != "Bees Hate You":
+	case black_market_available() && !bees:
 		return to_string(80.0/ heal[$item[black cherry soda]].avemp);
-	case dispensary_available() && my_path() != "Bees Hate You":
+	case dispensary_available() && !bees:
 		return to_string(80.0/ heal[$item[knob goblin seltzer]].avemp);
 	case white_citadel_available():
 		return to_string(80.0/ heal[$item[Regular Cloaca Cola]].avemp);
@@ -990,9 +991,9 @@ boolean purchase_mp(int target) {
 			best_buy = $item[magical mystery juice];
 			cost = 100;
 		} else if(my_meat() >= 80 && 6 + my_mp() <= my_maxmp() || !fizzy) {
-			if(black_market_available() && my_path() != "Bees Hate You")
+			if(black_market_available() && !bees)
 				best_buy = $item[black cherry soda];
-			else if(dispensary_available() && my_path() != "Bees Hate You")
+			else if(dispensary_available() && !bees)
 				best_buy = $item[knob goblin seltzer];
 			else if(white_citadel_available())
 				best_buy = $item[Regular Cloaca Cola];
@@ -1027,9 +1028,81 @@ boolean purchase_mp(int target) {
 	return (my_mp() >= target);
 }
 
+boolean lure_minion(int target) {
+	if(have_skill($skill[Lure Minions])) {
+		if(Verbosity > 2) print("Need to Lure Minions with Brains");
+		// Need to keep enough brains for today and half of tomorrow.
+		int brains_needed = ceil(fullness_limit() * 1.5) - my_fullness();
+		int check_brains(int brains) {
+			if(brains_needed == 0) return brains;
+			int temp = max(brains - brains_needed, 0);
+			brains_needed = max(brains_needed - brains, 0);
+			return temp;
+		}
+		boolean exchanged = false;
+		boolean lure(int x, int type) {  // type is both choice and number of minions per brain, up to 3.
+			// How many times do I do this to reach target?
+			x = min(ceil(to_float(target - my_mp()) / type), x);
+			if(Verbosity > 2) print("Using "+x+" brains of level "+ type);
+			if(x > 0) {
+				if(!exchanged) // Start choice adventure first time only
+					visit_url("skills.php?pwd&action=Skillz&whichskill=12002&skillform=Use+Skill&quantity=1");
+				visit_url("choice.php?pwd&whichchoice=599&option="+type+"&quantity="+ x);
+				exchanged = true;
+			}
+			return my_mp() >= target;
+		}
+		check_brains(item_amount($item[hunter brain]));
+		check_brains(item_amount($item[boss brain]));
+		// Count hunter and boss brains, but do not trade them, so number need not be remembered
+		int spare_good = check_brains(item_amount($item[good brain]));
+		int spare_decent = check_brains(item_amount($item[decent brain]));
+		int spare_crappy = check_brains(item_amount($item[crappy brain]));
+		// Reserve them in order from best to worst. Then trade them worst first. Stop once one returns true.
+		if(lure(spare_crappy, 1) || lure(spare_decent, 2) || lure(spare_good, 3)) {}
+		// Finish choice adventure if started
+		if(exchanged) visit_url("choice.php?pwd&whichchoice=599&option=5");
+		return my_mp() >= target;
+	}
+	if(Verbosity > 2) print("Don't know how to Lure Minions");
+	return false;
+}
+
+boolean summon_minion(int target) {
+	if(have_skill($skill[Summon Minion])) {
+		if(Verbosity > 2) print("Need to Summon Minions with Meat");
+		int x = target - my_mp();
+		// Never use Summon Minion if you have Summon Horde because +20% combats could cause trouble
+		if(have_skill($skill[Summon Horde])) {
+			x = ceil(x / 12.0);
+			x = min(my_meat() / 1000, x);
+			if(Verbosity > 2) print("Summoning a horde "+ x+" times");
+			if(x > 0) {
+				visit_url("skills.php?pwd&action=Skillz&whichskill=12026&skillform=Use+Skill&quantity=1");
+				for cast from 1 to x
+					visit_url("choice.php?pwd&whichchoice=601&option=1");
+				visit_url("choice.php?pwd&whichchoice=601&option=2");
+			}
+		} else {
+			x = min(my_meat() / 100, x);
+			if(Verbosity > 2) print("Summoning "+x+" minions");
+			if(x > 0) {
+				visit_url("skills.php?pwd&action=Skillz&whichskill=12021&skillform=Use+Skill&quantity=1");
+				visit_url("choice.php?pwd&whichchoice=600&option=1&quantity=" + x);
+				visit_url("choice.php?pwd&whichchoice=600&option=2");
+			}
+		}
+	} else if(Verbosity > 2) print("Don't know how to Summon Minions");
+	return my_mp() >= target;
+}
+
 // This restores mp, first from nuns (if completed as fratboy), then Oscus' Soda, then free disco rests,
 // then inventory, then purchasing as necessary.
 boolean mp_heal(int target){
+	if(zombie) {
+		if(Verbosity > 0) print("Restoring Horde! Currently at "+ my_hp()+ " of " + my_maxhp()+ " HP, "+ my_mp()+ " Horde, current meat: "+my_meat()+" ... Target Horde = "+ target+ ".", "#33CCCC");
+		return lure_minion(target) || summon_minion(target);
+	}
 	if(target > my_maxmp())
 		target = my_maxmp();
 	if(Verbosity > 0) print("Restoring MP! Currently at "+ my_hp()+ " of " + my_maxhp()+ " HP, "+ my_mp()+ " of " + my_maxmp()+ " MP, current meat: "+my_meat()+" ... Target MP = "+ target+ ".", "#33CCCC");
@@ -1046,7 +1119,7 @@ boolean mp_heal(int target){
 	  && heal[$item[Delicious shimmering moth]].avemp* BirdThreshold + my_mp() <= my_maxmp())
   		use(inv_quant($item[Delicious shimmering moth], target- my_mp(), "MP").max(1), $item[Delicious shimmering moth]);
 	if(contains_text(mpAutoRecoveryItems, "free disco rest") 
-	  && (numeric_modifier("Base Resting MP") >= 10 || my_path() == "Bees Hate You"))
+	  && (numeric_modifier("Base Resting MP") >= 10 || bees))
 		while(to_int(get_property("timesRested")) < disco  && my_mp()<target
 		  && my_maxmp() - my_mp() >=rest_mp && (DiscoResting == "mp" || (my_maxhp() - my_hp())/2 >= rest_hp))
 			cli_execute("rest");
@@ -1069,7 +1142,8 @@ boolean mp_heal(int target){
 			while(x*my_level()*5 +my_hp() > my_maxhp())
 				x = x - 1;
 			x = min(x, my_adventures());
-			cli_execute("sofa "+x);  //visit_url("clan_rumpus.php?preaction=nap&numturns="+ x + "&pwd");
+			if(x > 0)
+				cli_execute("sofa "+x);  //visit_url("clan_rumpus.php?preaction=nap&numturns="+ x + "&pwd");
 		}
 	} else if(my_adventures() > 0 && contains_text(mpAutoRecoveryItems, "rest at your campground"))
 		while(my_mp() < target && my_mp() < my_maxmp() &&(my_maxmp() - my_mp() >=rest_mp && my_maxhp() - my_hp() >= rest_hp || AlwaysContinue) && my_adventures() > 0)
@@ -1087,7 +1161,7 @@ boolean fullheal() {
 	string select_method() {
 		switch {
 		case beset($effect[Form of...Bird]) && item_amount($item[plump juicy grub]) > 0 
-		  && heal[$item[plump juicy grub]].avehp + my_hp() >= my_maxhp() && my_path() != "Bees Hate You":
+		  && heal[$item[plump juicy grub]].avehp + my_hp() >= my_maxhp() && !bees:
 			return use(1, $item[plump juicy grub]);
 		case use_herb && my_spleen_use() < (spleenfam? (spleen_limit()%4): spleen_limit())
 		  && (item_amount($item[Medicinal Herb's medicinal herbs]) >0 || (my_meat() >=100 && my_primestat() == $stat[muscle] && buy_npc)):
@@ -1098,7 +1172,7 @@ boolean fullheal() {
 		  || (my_maxmp() >= skills[cheap_skill].mp && mp_heal(skills[cheap_skill].mp))):
 			if(my_hp() >= my_maxhp()) return true;
 			return cast(1, cheap_skill);
-		case galaktik_price <= 100 && my_meat() >= galaktik_price:
+		case galaktik_price <= 100 && my_meat() >= galaktik_price && !zombie:
 			return galaktik(my_maxhp() - my_hp(), true, "HP");
 		case item_amount($item[scroll of drastic healing]) >0 && contains_text(hpAutoRecoveryItems, "drastic healing"):
 			return use(1, $item[scroll of drastic healing]);
@@ -1106,6 +1180,10 @@ boolean fullheal() {
 		  && item_amount($item[scented massage oil]) >0:
 			return use(1, $item[scented massage oil]);
 		}
+		// Select something which is just too big for normal use
+		foreach key, value in heal
+			if(item_amount(key) >0 && value.avehp > my_maxhp() - my_hp() && value.maxhp > 120 && my_maxhp() > 100 && my_hp() < my_maxhp() / 5)
+				return use(1, key);
 		return false;
 	} select_method();
 	return (my_hp() == my_maxhp());
@@ -1118,7 +1196,7 @@ boolean inv_hp_restore(int target, item [int] options) {
 	if(Verbosity > 1) print("Try to heal HP from inventory.", "blue");
 	if(my_hp() < ceil(my_maxhp() / 6.0) || max_heal(options) < target - my_hp())
 		if(fullheal()) return true;
-	if(beset($effect[Form of...Bird]) && item_amount($item[plump juicy grub]) > 0  && my_path() != "Bees Hate You"
+	if(beset($effect[Form of...Bird]) && item_amount($item[plump juicy grub]) > 0  && !bees
 	  && heal[$item[plump juicy grub]].avehp * BirdThreshold + my_hp() <= my_maxhp())
   		use(inv_quant($item[plump juicy grub], target- my_hp(), "HP").max(1), $item[plump juicy grub]);
 	if(my_hp()>=target) return true;
@@ -1147,7 +1225,7 @@ boolean inv_hp_restore(int target, item [int] options) {
 			if(heal[options[i]].avehp*.85 <= my_maxhp()- my_hp() && options[i].for_use() > 0) {
 				q = quantity_limt(options[i]);
 				if(q>0) {
-					use_inv(quantity_limt(options[i]), options[i]);
+					use_inv(q, options[i]);
 					if(my_hp() >= target *.90) return true;
 				}
 			}
@@ -1224,6 +1302,11 @@ boolean cure_beatenup(int target){
 		return true;
 	}
 	populate_skills(1);
+	
+	// Zombie Master recovery
+	if(have_skill($skill[Devour Minions]))
+		return cast(1, $skill[Bite Minion]);
+
 	if(mallcore)  	// Switch to mallcore mode if out of ronin.
 		return cheapest_beatup();
 	cli_execute("whatif uneffect beaten up; quiet");
@@ -1293,6 +1376,7 @@ boolean skill_restore(int target) {
 		if(my_mp() >= skills[cheap_skill].mp * q)
 			cast(q, cheap_skill);
 		else {
+		if(Verbosity > 2) print("Need "+(skills[cheap_skill].mp * q)+" MP to cast that skill.");
 			if(mp_heal(skills[cheap_skill].mp * q))
 				old = old - 1; 	// mp restoration may have restored hp. Do another iteration and recalc
 		}
@@ -1322,7 +1406,7 @@ boolean purchase_hp(int target) {
 		} else target = max(hp_autoheal, target * .9);
 	} else if(target > objective)
 		target = objective;		// In the case that objective !=0, target is lowered to original minimum
-	while(my_meat() >= 60 && my_hp() < target)
+	while(my_meat() >= 60 && my_hp() < target && !zombie)
 		if(galaktik_cures_discounted() && contains_text(hpAutoRecoveryItems, "curative nostrum")) {
 			galaktik(target - my_hp(), true, "HP");
 		} else if(my_meat() >= 60) {
@@ -1339,7 +1423,7 @@ boolean purchase_hp(int target) {
 	return (my_hp() >= target);
 }
 
-// This returns true if the character is currently mining, or is in the Hidden Temple.
+// This returns true if the character is currently mining, or Unhydrated.
 boolean need_only_1hp() {
 	switch(my_location()) {
 	case $location[Desert (Unhydrated)]:
@@ -1358,10 +1442,9 @@ boolean need_only_1hp() {
 	return false;
 }
 
-// This returns true if the character is currently mining, or is in the Hidden Temple.
+// This returns true if the character is currently mining, or Unhydrated.
 boolean need_nomp() {
 	switch(my_location()) {
-	case $location[hidden temple]:
 	case $location[Desert (Unhydrated)]:
 		if(get_property("lastEncounter") == "Let's Make a Deal!" || get_property("lastEncounter") == "No Visible Means of Support")
 			return false;
@@ -1385,7 +1468,7 @@ boolean hp_heal(int target){
 	if(Verbosity > 0) print("Restoring HP! Currently at "+ my_hp()+ " of " + my_maxhp()+ " HP, "+ my_mp()+ " of " + my_maxmp()+ " MP, current meat: "+my_meat()+" ... Target HP = "+ target+ ".", "#66CC00");
 	// First line of defense is plump juicy grubs. If ONE will do the job then do it!
 	if(!mallcore && beset($effect[Form of...Bird]) && item_amount($item[plump juicy grub]) > 0 
-	  && heal[$item[plump juicy grub]].avehp + my_hp() >= my_maxhp()  && my_path() != "Bees Hate You"
+	  && heal[$item[plump juicy grub]].avehp + my_hp() >= my_maxhp()  && !bees
 	  && heal[$item[plump juicy grub]].avehp * BirdThreshold + my_hp() <= my_maxhp()) {
 		use(1, $item[plump juicy grub]);
 		if(my_hp() >= target) return true;
@@ -1435,7 +1518,7 @@ boolean hp_heal(int target){
 		if(fullheal()) return true;
 		if(cheap_skill != $skill[none] && cast_quant(cheap_skill, target)>0) {
 			// Inventory won't completely heal, so better to cast this skill BEFORE wasting a healing item
-			if(my_mp()>= skills[cheap_skill].mp || (my_maxhp() >= skills[cheap_skill].mp && mp_heal(skills[cheap_skill].mp))) {
+			if(my_mp()>= skills[cheap_skill].mp || ((my_maxhp() >= skills[cheap_skill].mp || zombie) && mp_heal(skills[cheap_skill].mp))) {
 				if(my_hp() >= target) return true; // mp restoration may have restores hp
 				cast(1, cheap_skill);
 			}
@@ -1444,7 +1527,7 @@ boolean hp_heal(int target){
 		if(my_hp() >= target) return true;
 	}
 	if(contains_text(hpAutoRecoveryItems, "free disco rest") 
-	  && (numeric_modifier("Base Resting MP") >= 10 || my_path() == "Bees Hate You"))
+	  && (numeric_modifier("Base Resting MP") >= 10 || bees))
 		while(to_int(get_property("timesRested")) < disco  && my_hp()<target
 		  && my_maxhp() - my_hp() >=rest_hp && (DiscoResting == "hp" || my_maxmp() - my_mp() >= rest_mp))
 			cli_execute("rest");
@@ -1462,7 +1545,8 @@ boolean hp_heal(int target){
 			while(x*my_level()*5 +my_mp() > my_maxmp())
 				x = x - 1;
 			x = min(x, my_adventures());
-			cli_execute("sofa "+x);
+			if(x > 0)
+				cli_execute("sofa "+x);
 		} 
 	} else if(my_adventures() > 0 && contains_text(hpAutoRecoveryItems, "rest at your campground"))
 		while(my_hp() < target && my_hp() < my_maxhp() && (my_maxmp() - my_mp() >=rest_mp && my_maxhp() - my_hp() >= rest_hp || AlwaysContinue) && my_adventures() > 0)
@@ -1476,6 +1560,9 @@ boolean hp_heal(int target){
 // This will cure poisoning. It will only fail if the character does not possess an antidote, or can't afford to buy one.
 // It will also attempt to keep a few spare anti-anti-antidotes in inventory, for emergency in-combat use.
 boolean unpoison() {
+	if(zombie)
+		return true; // Zombie Masters don't stay poisoined and cannot purchase antidotes.
+
 	// Am I poisoned?
 	boolean poisoned() {
 		return beset($effects[Hardly Poisoned at All, A Little Bit Poisoned, Really Quite Poisoned,
@@ -1524,10 +1611,22 @@ void cure_status() {
 			+(available_amount($item[Clan VIP Lounge key]) == 0? "": "or dip in the Hot Tub ")
 			+"to cure it.", "red");
 	
-	if(beset($effects[Apathy, Easily Embarrassed, Flared Nostrils, Prestidigysfunction, Tenuous Grip on Reality, The Colors...])
+	if(have_skill($skill[Devour Minions]) && beset($effects[Cunctatitis, Apathy, Tetanus, Barking Dogs, 
+	  Turned Into a Skeleton, Sleepy, Apathy, All Covered In Whatsit, Flared Nostrils]))
+		skill_cure($skill[Bite Minion]);
+	
+	if(beset($effects[Apathy, Easily Embarrassed, Flared Nostrils, Prestidigysfunction, Tenuous Grip on Reality, 
+	  The Colors...])
 	  && !use_hot_tub() && have_skill($skill[Disco Power Nap]))
 		skill_cure($skill[Disco Power Nap]);
 
+	if(beset($effect[N-Spatial vision]) && my_location() == $location[Navigation]) {
+		if(item_amount($item[bugbear purification pill]) > 0)
+			use(1, $item[bugbear purification pill]);
+		else if(!skill_cure($skill[Disco Power Nap]) && retrieve_item(1, $item[bugbear purification pill]))
+			use(1, $item[bugbear purification pill]);
+	}
+	
 	if(beset($effects[Cunctatitis, Tetanus, Socialismydia]) && !use_hot_tub()) {
 		if(have_skill($skill[Disco Power Nap]))
 			skill_cure($skill[Disco Power Nap]);
@@ -1575,7 +1674,7 @@ void choose_reserve_purch() {
 	} else if(buy_npc) {
 		if(buy_mmj) {
 			reserve_purch = $item[magical mystery juice];
-		} else if(dispensary_available() && my_path() != "Bees Hate You")
+		} else if(dispensary_available() && !bees)
 			reserve_purch = $item[Knob Goblin seltzer];
 		switch {
 		case reserve_purch == null:
@@ -1592,6 +1691,7 @@ void choose_reserve_purch() {
 // This will choose a healing item to hold in reserve for combat use. 
 // Global variable reserve is set here and 1 of that item will not be used for healing.
 void reserve_healing() {
+	if(zombie) return;
 	choose_reserve_purch();
 	if(!mallcore && buy_npc) {
 		// Try to be frugal and consider on-hand reserve if in hardcore/ronin.
@@ -1619,7 +1719,7 @@ void reserve_healing() {
 		switch (reserve_purch) {
 		case null: break;
 		case $item[Knob Goblin seltzer]:
-			if(!dispensary_available() || my_path() == "Bees Hate You")
+			if(!dispensary_available() || bees)
 				break;
 		case $item[magical mystery juice]:
 		default:
@@ -1668,7 +1768,7 @@ string check_version() {
 		w=19;
 		set_property(prop,find_ver.group(1));
 		default:
-		if (sameornewer(thisver,get_property(prop))) {
+		if(sameornewer(thisver,get_property(prop))) {
 			set_property(prop,thisver);
 			print("You have a current version of "+soft+".");
 			return "";
@@ -1706,27 +1806,11 @@ void daily_handling() {
 		restore_values();
 		meatper();
 		check_version();
-		/*
-		set_property("_version_BalesUniversalRecovery", thisver);
-		
-		// My rendition of zarqon's version checker
-		matcher version = create_matcher("<b>Universal Recovery (.+?)</b>", 
-			visit_url("http://kolmafia.us/showthread.php?1780-Universal-Recovery-Script&p=10856&viewfull=1#post10856"));
-		if(version.find()) {
-			current_ver = version.group(1);
-			if(current_ver.to_float() > thisver.to_float()) {
-				print_html("<big><font color=red><b>New version of Bale's Universal Recovery available: "+current_ver+"</b></font></big>");
-				print_html("<font color=red>Visit <font size=\"4\"><u>http://kolmafia.us/showthread.php?t=1780</u></font> for the latest version.</font>");
-				print("The script is now pausing so that you can read the message. This won't happen again today.", "FF9900");
-				wait(20);
-			}
-		} else print("Unable to load current version info.", "red");
-		*/
 	}
 }
 
-void boris() {
-	if(my_path() != "Avatar of Boris") return;
+void manaburn_healing() {
+	if(!boris) return;
 	float manaBurningThreshold = get_property("manaBurningThreshold").to_float();
 	if(manaBurningThreshold < 0) return;
 	int extra_mp = my_mp() - manaBurningThreshold * my_maxmp();
@@ -1741,8 +1825,8 @@ void boris() {
 // Returns false if cannot fully heal.
 boolean restore(string type, int amount) {
 	daily_handling(); 	// This will do some stuff on the first run of the day
-	if(Verbosity > 2) print("Calling Universal Recovery for type="+type+", amount="+amount,"red");
-	// If you are in the hidden temple or mining, then only 1 HP is needed and status effects are irrelevant.
+	if(Verbosity > 2) print("Calling Universal Recovery "+thisver+" for type="+type+", amount="+amount,"red");
+	// If you are Unhydrated or mining, then only 1 HP is needed and status effects are irrelevant.
 	if(amount == 0) {
 		if(type == "MP") {
 			if(need_nomp())
@@ -1750,7 +1834,10 @@ boolean restore(string type, int amount) {
 		} else if(need_only_1hp()) {
 			if(my_hp() < 1 && hp_autoheal >= 0) {
 				if(Verbosity > 0) print("Restoring only 1 HP since more is irrelevant here", "#66CC00");
-				galaktik(1, true, "HP");
+				if(zombie)
+					hp_heal(1);
+				else
+					galaktik(1, true, "HP");
 			}
 			return my_hp() > 0;
 		}
@@ -1760,7 +1847,7 @@ boolean restore(string type, int amount) {
 	restore_values();
 	if(!ignoreStatus) cure_status();
 	reserve_healing();
-	boris();
+	manaburn_healing();
 	if(type == "MP") {
 		if(objective == 0 && mp_autoheal < 0) return true;
 		if(!ignoreStatus && beset($effect[Beaten Up]) && objective == 0 && hp_autoheal >= 0)
@@ -1800,8 +1887,12 @@ void check_restore(string type, int amount) {
 		} else if(beset($effect[Beaten Up])) {
 			set_property("baleUr_"+type+"trouble", "true");
 		} else set_property("baleUr_"+type+"trouble", "false");
-	} else if(!restore(type, amount))
-		abort("Did not fully restore "+ type + " for some reason.");
+	} else {
+		if(!restore(type, amount))
+			abort("Did not fully restore "+ type + " for some reason.");
+		else if(beset($effect[Beaten Up]))
+			abort("Did not recover from being Beaten Up!");
+	}
 }
 
 // Passes all restoration logic to restore() to improve inclusion in another restoreScript.

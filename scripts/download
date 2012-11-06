@@ -1,0 +1,414 @@
+<!doctype html>
+<!-- Server: sfs-consume-8 -->
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6" > <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7" > <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8" > <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9" > <![endif]-->
+<!--[if (gt IE 9)|!(IE)]>--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        
+        <meta id="webtracker" name="webtracker" content='{"event_id": "03504f30-163d-11e2-a9cf-0200ac1d1d8b", "project": "bumcheekascend", "non_clicker": 0.9082243506900626, "active_tests": ["6384-3"], "clicker": 0.09326206919227174}'>
+
+        <meta name="description" content="bumcheekascend bumcheekascend">
+        <meta name="keywords" content=" Open Source, Open Source Software, Development, Community, Source Code, Secure,  Downloads, Free Software">
+<noscript>
+    <meta http-equiv="refresh" content="5; url=http://downloads.sourceforge.net/project/bumcheekascend/bumcheekascend%20v0.52.ash?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbumcheekascend%2Ffiles%2F&amp;ts=1350246207&amp;use_mirror=iweb">
+</noscript>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Download bumcheekascend from SourceForge.net</title>
+        <link rel="shortcut icon" href="http://a.fsdn.com/con/img/sftheme/favicon.ico">
+        <link rel="canonical" href="http://sourceforge.net/projects/bumcheekascend/">
+        <script type="text/javascript">
+            /*global unescape, window, console, jQuery, $, net, SF, COMSCORE, DD_belatedPNG */
+            // Setup our namespace
+            if (!window.SF) { window.SF = {}; }
+            if (!window.net) { window.net = {}; }
+            if (!window.net.sf) { window.net.sf = {}; }
+            SF.cdn = 'http://a.fsdn.com/con';
+            SF.deploy_time = '1349897674';
+        </script>
+        <script src="http://a.fsdn.com/con/js/min/sf.head.js?1349897674" type="text/javascript"></script>
+        
+<!--[if lt IE 7 ]>
+  <script src="http://a.fsdn.com/con/js/sftheme/dd_belatedpng.js"></script>
+  <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+ <link rel="stylesheet" href="http://a.fsdn.com/con/css/download.css?1349897674" type="text/css">
+        
+<script type="text/javascript">
+    SF.adblock = true;
+    var immersion_adcode = "";
+</script>
+        <script type="text/javascript" src="http://a.fsdn.com/con/js/adframe.js?1349897674"></script>
+<script type="text/javascript" src="http://a.fsdn.com/con/js/lib/jquery.outerhtml.js?1349897674"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+
+            function _add_tracking(prefix, tracking_id, send_user) {
+                _gaq.push([prefix+'._setAccount', tracking_id]);
+                _gaq.push([prefix+'._setCustomVar', 1, 'Page Type', 'pg_dwnld', 3]);
+                _gaq.push([prefix+'._setCustomVar', 3, 'Project', 'bumcheekascend', 3]);
+                _gaq.push([prefix+'._setCustomVar', 4, 'Topic', '', 3]);
+              _gaq.push([prefix+'._trackPageview']);
+            }
+
+            _gaq.push(['_setAccount', 'UA-32013-6']);
+            _gaq.push(['_setCustomVar', 1, 'Page Type', 'pg_dwnld', 3]);
+            _gaq.push(['_setCustomVar', 3, 'Project', 'bumcheekascend', 3]);
+            _gaq.push(['_setCustomVar', 4, 'Topic', '', 3]);
+            
+            _gaq.push(['_trackPageview']);
+            
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body id="pg_dwnld" class="bluesteel">
+        
+
+
+<div id="p77_immersion" class="ad">
+    
+<script type="text/javascript">
+    SF.loadAd('p77_immersion', 'http://ad.doubleclick.net/adj/ostg.sourceforge/cons_pg_dwnld_none_p77_immersion;pg=/project/downloading.php;psrch=0;logged_in=0;tpc=bumcheekascend;tile=1;sz=700x500;u=e%3A03504f30-163d-11e2-a9cf-0200ac1d1d8b;ord=534635840600834?', 'cons_pg_dwnld_none_p77_immersion');
+</script>
+</div>
+
+
+        <div id="busy-spinner"></div>
+        
+<header id="site-header">
+    <div class="wrapper">
+        <a href="/" class="logo">
+            <span>SourceForge</span>
+        </a>
+        <form method="get" action="/directory/">
+            <input type="text" id="words" name="q" placeholder="Search">
+        </form>
+        <!--Switch to {language}-->
+        <nav id="nav-site">
+            <a href="/directory/" title="Browse our software.">Browse</a>
+            <a href="/blog/" title="Read the latest news from the SF HQ.">Blog</a>
+            <a href="/support" title="Contact us for help and feedback.">Help</a>
+        </nav>
+        <nav id="nav-account">
+            
+              <div class="logged_out">
+                <a href="https://sourceforge.net/account/login.php">Log In</a>
+                <span>or</span>
+                <a href="https://sourceforge.net/user/registration">Join</a>
+              </div>
+            
+        </nav>
+    </div>
+</header>
+<header id="site-sec-header">
+    <div class="wrapper">
+        
+<div id="downloading">
+    <div id="starting">
+        <h1>
+            <a href="/projects/bumcheekascend/">bumcheekascend</a>
+        </h1>
+        <p id="dl_countdown">
+            Your download will start shortly...
+        </p>
+        <p>
+        
+        
+            Problems with the download?  Please use this 
+            <a href="http://downloads.sourceforge.net/project/bumcheekascend/bumcheekascend%20v0.52.ash?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbumcheekascend%2Ffiles%2F&amp;ts=1350246207&amp;use_mirror=iweb" class="direct-download">
+        direct link</a>, or try another 
+            <a href="/settings/mirror_choices?projectname=bumcheekascend&amp;filename=bumcheekascend%20v0.52.ash"
+               title="A mirror is an exact copy of a download available in multiple locations around the world.  Select the one closest to your location."
+               class="mirror" data-release-url="http://downloads.sourceforge.net/project/bumcheekascend/bumcheekascend%20v0.52.ash?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fbumcheekascend%2Ffiles%2F&amp;ts=1350246207&amp;use_mirror=iweb" rel="nofollow">
+        mirror</a>.
+        </p>
+    </div>
+
+    <div id="mirror">
+        
+        Mirror provided by: 
+            
+              
+              
+              <a href="http://iweb.com/" title="iWeb"><img id="mirror-logo" src="http://images.sourceforge.net/mirrorimages/iweb-small.jpg" alt="iWeb" width="100" height="41"/></a>
+            
+        
+    </div>
+</div>
+<div id="mirror-drawer"></div>
+    </div>
+</header>
+
+        
+        <div id="messages">
+        </div>
+        <div id="page-body">
+<div id="content-template2" class="content">
+    <div class="ads">
+        <div class="row">
+            <div class="unit"><div id="p83_medrec" class="ad medrec">
+<script type="text/javascript">
+    SF.loadAd('p83_medrec', 'http://ad.doubleclick.net/adj/ostg.sourceforge/cons_pg_dwnld_none_p83_medrec;pg=/project/downloading.php;psrch=0;logged_in=0;tpc=bumcheekascend;tile=2;sz=300x250;u=e%3A03504f30-163d-11e2-a9cf-0200ac1d1d8b;ord=534635840600834?', 'cons_pg_dwnld_none_p83_medrec');
+</script></div></div>
+            <div class="unit"><div id="p84_medrec" class="ad medrec">
+<script type="text/javascript">
+    SF.loadAd('p84_medrec', 'http://ad.doubleclick.net/adj/ostg.sourceforge/cons_pg_dwnld_none_p84_medrec;pg=/project/downloading.php;psrch=0;logged_in=0;tpc=bumcheekascend;tile=3;sz=300x250;u=e%3A03504f30-163d-11e2-a9cf-0200ac1d1d8b;ord=534635840600834?', 'cons_pg_dwnld_none_p84_medrec');
+</script></div></div>
+        </div>
+        <div class="row">
+            <div class="unit"><div id="p86_featureddl" class="ad medrec">
+<script type="text/javascript">
+    SF.loadAd('p86_featureddl', 'http://ad.doubleclick.net/adj/ostg.sourceforge/cons_pg_dwnld_none_p86_featureddl;pg=/project/downloading.php;psrch=0;logged_in=0;tpc=bumcheekascend;tile=4;sz=300x150,300x250;u=e%3A03504f30-163d-11e2-a9cf-0200ac1d1d8b;ord=534635840600834?', 'cons_pg_dwnld_none_p86_featureddl');
+</script></div></div>
+            <div class="unit"><div id="p71_text" class="ad text">
+<script type="text/javascript">
+    SF.loadAd('p71_text', 'http://ad.doubleclick.net/adj/ostg.sourceforge/cons_pg_dwnld_none_p71_text;pg=/project/downloading.php;psrch=0;logged_in=0;tpc=bumcheekascend;tile=5;sz=1x1;u=e%3A03504f30-163d-11e2-a9cf-0200ac1d1d8b;ord=534635840600834?', 'cons_pg_dwnld_none_p71_text');
+</script></div></div>
+        </div>
+    </div>
+    
+    
+
+<aside class="sidebar">
+    
+    
+    <div class="recommended-widget">
+    
+<aside class="sidebar-widget">
+	<header>
+        <h3>Recommended Projects</h3>
+	</header>
+    <ul>
+    
+        <li class="item odd">
+            <a href="/projects/kolmafia/?source=recommended" title="KoLmafia"><img alt="Icon" src="//a.fsdn.com/con/img/project_default.png" /></a>
+            <a href="/projects/kolmafia/?source=recommended" title="Learn more about KoLmafia ">KoLmafia</a>
+        </li>
+    
+        <li class="item even">
+            <a href="/projects/sevenzip/?source=recommended" title="7-Zip"><img alt="Icon" src="//a.fsdn.com/con/icons/se/sevenzip%40sf.net/FM.png" /></a>
+            <a href="/projects/sevenzip/?source=recommended" title="Learn more about 7-Zip ">7-Zip</a>
+        </li>
+    
+        <li class="item odd last">
+            <a href="/projects/vlc/?source=recommended" title="VLC media player"><img alt="Icon" src="//a.fsdn.com/allura/p/vlc/icon" /></a>
+            <a href="/projects/vlc/?source=recommended" title="Learn more about VLC media player ">VLC media player</a>
+        </li>
+    
+    </ul>
+</aside>
+
+    </div>
+    
+    
+    
+    
+    
+</aside>
+
+
+    
+</div>
+
+<div id="content-immersion" class="content">
+    <div class="ads">
+        <div id="immersion-container" class="ad immersion">
+            <script type="text/javascript">
+                function wrapperResize($wrapper) {
+                    var width = jQuery(window).width();
+                    $wrapper.css('width', width).css('margin-left', function() { return width / 2 * -1; });
+                }
+                document.write(immersion_adcode);
+                var $wrapper = jQuery('.ad.wrapper');
+                if ($wrapper.length) {
+                    jQuery('#content-immersion').addClass('with-wrapper');
+                    wrapperResize($wrapper);
+                    jQuery(window).resize(function() {
+                        wrapperResize($wrapper);
+                    });
+                }
+            </script>
+        </div>
+    </div>
+    
+    
+
+<aside class="sidebar">
+    
+    
+    <div class="recommended-widget">
+    
+<aside class="sidebar-widget">
+	<header>
+        <h3>Recommended Projects</h3>
+	</header>
+    <ul>
+    
+        <li class="item odd">
+            <a href="/projects/kolmafia/?source=recommended" title="KoLmafia"><img alt="Icon" src="//a.fsdn.com/con/img/project_default.png" /></a>
+            <a href="/projects/kolmafia/?source=recommended" title="Learn more about KoLmafia ">KoLmafia</a>
+        </li>
+    
+        <li class="item even">
+            <a href="/projects/sevenzip/?source=recommended" title="7-Zip"><img alt="Icon" src="//a.fsdn.com/con/icons/se/sevenzip%40sf.net/FM.png" /></a>
+            <a href="/projects/sevenzip/?source=recommended" title="Learn more about 7-Zip ">7-Zip</a>
+        </li>
+    
+        <li class="item odd last">
+            <a href="/projects/vlc/?source=recommended" title="VLC media player"><img alt="Icon" src="//a.fsdn.com/allura/p/vlc/icon" /></a>
+            <a href="/projects/vlc/?source=recommended" title="Learn more about VLC media player ">VLC media player</a>
+        </li>
+    
+    </ul>
+</aside>
+
+    </div>
+    
+    
+    
+    
+    
+</aside>
+
+
+    
+</div>
+
+<script type="text/javascript">
+    if (immersion_adcode) {
+        var container = jQuery('#content-immersion');
+        container.show();
+        jQuery('#content-template2').hide();
+        
+        var now = new Date(), october = new Date(2012, 9, 31);
+        if (now > october) {
+            if ((immersion_adcode.indexOf('accelacomm') === -1 &&
+                 immersion_adcode.indexOf('perfectforms') === -1) &&
+                 container.children('.sidebar').length &&
+                (container.find('.sidebar .accordion').length ||
+                 container.find('.sidebar .sidebar-widget').css('display') === 'block')) {
+                container.addClass('with-sidebar');
+                container.children('.sidebar').show();
+            }
+        }
+        jQuery('body').attr('data-template', 'template1');
+    } else {
+        jQuery('body').attr('data-template', 'template2');
+        var container = jQuery('#content-template2');
+        if (container.children('.sidebar').length &&
+            (container.find('.sidebar .accordion').length ||
+            container.find('.sidebar .sidebar-widget').css('display') === 'block')) {
+            container.addClass('with-sidebar');
+            container.children('.sidebar').show();
+        }
+    }
+</script>
+
+        </div>
+
+        
+        <!-- Begin comScore Tag -->
+        <script type="text/javascript">
+            document.write(unescape("%3Cscript src='" + (document.location.protocol === "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+            if (window.COMSCORE) {
+                COMSCORE.beacon({
+                    c1: 2,
+                    c2: 6035546,
+                    c3: "",
+                    c4: "",
+                    c5: "",
+                    c6: "",
+                    c15: ""
+                });
+            }
+        </script>
+        <noscript>
+            <img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6035546&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cj=1" alt="comScore2" />
+        </noscript>
+        <!-- End comScore Tag -->
+        
+    <script type="text/javascript">
+        SF.downloadDelay = 5000;
+        SF.downloadRedirectDelay = 60000;
+        SF.ios = false;
+    </script>
+    <script src="http://a.fsdn.com/con/js/min/sf.dwnld.js?1349897674" type="text/javascript"></script>
+
+
+          
+<footer id="site-footer">
+    <div class="wrapper">
+        <nav>
+            <h5>SourceForge</h5>
+            <a href="/about">About</a>
+            <a href="/blog/category/sitestatus/">Site Status</a>
+            <a href="http://twitter.com/sfnet_ops">@sfnet_ops</a>
+        </nav>
+        <nav>
+            <h5>Find and Develop Software</h5>
+            <a href="/create/">Create a Project</a>
+            <a href="/directory/">Software Directory</a>
+            <a href="/top">Top Downloaded Projects</a>
+        </nav>
+        <nav>
+            <h5>Community</h5>
+            <a href="/blog/">Blog</a>
+            <a href="http://twitter.com/sourceforge">@sourceforge</a>
+            <a href="http://jobs.sourceforge.net/">Job Board</a>
+        </nav>
+        <nav>
+            <h5>Help</h5>
+            <a href="/apps/trac/sourceforge/wiki/WikiStart">Site Documentation</a>
+            <a href="/support">Support Request</a>
+            <a href="http://webchat.freenode.net/?randomnick=0&amp;channels=sourceforge">Real-Time Support</a>
+        </nav>
+    </div>
+</footer>
+<footer id="site-copyright-footer">
+    <div class="wrapper">
+        <div id="copyright">
+            <img src="http://a.fsdn.com/con/img/sftheme/gknt-footer-logo.png" alt="Geeknet, Inc. Logo"/>
+            &copy; 2012 <a href="http://geek.net" title="Network which provides and promotes Open Source software downloads, development, discussion and news.">Geeknet, Inc.</a>
+        </div>
+        <nav>
+            <a href="http://geek.net/terms-of-use">Terms</a>
+            <a href="http://geeknetmedia.com/privacy-statement/">Privacy</a>
+            <a href="http://geek.net/opt-out-choices">Cookies/Opt Out</a>
+            <a href="http://geek.net/advertise/">Advertise</a>
+            <a href="http://sourceforge.jp/">SourceForge.JP</a>
+            <a href="http://ibmsmarteritservices.sourceforge.net/">Smarter IT</a>
+        </nav>
+    </div>
+</footer>
+
+    
+
+<script type="text/javascript">
+(function($) {
+    $('.recommended-widget a').bind('click', function(e) {
+        if (window.utmx) {
+            var href = this.href;
+            e.preventDefault();
+            try {
+                _gaq.push(['_trackEvent', 'ContentExperiment', 'Goal', 'bumcheekascend', 1, true]);
+                setTimeout('document.location = "' + href + '"', 100)
+            } catch(err){
+                document.location = href;
+            }
+        }
+    });
+}(jQuery));
+</script>
+
+    </body>
+</html>
